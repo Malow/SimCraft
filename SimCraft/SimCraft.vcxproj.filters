@@ -161,6 +161,9 @@
     <ClCompile Include="..\Source\GraphicsEngine\StaticMesh.cpp">
       <Filter>Graphics Engine Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\PythonWrapper.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\stdafx.h">
@@ -306,6 +309,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\GraphicsEngine\StaticMesh.h">
       <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\PythonWrapper.h">
+      <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -62,6 +62,7 @@
     <ClCompile Include="..\Source\MaloWLib\KeyListener.cpp" />
     <ClCompile Include="..\Source\MaloWLib\Process.cpp" />
     <ClCompile Include="..\Source\MaloWLib\TCBSpline.cpp" />
+    <ClCompile Include="..\Source\PythonWrapper.cpp" />
     <ClCompile Include="..\Source\SoundEngine\SoundEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +114,7 @@
     <ClInclude Include="..\Source\MaloWLib\Process.h" />
     <ClInclude Include="..\Source\MaloWLib\Queue.h" />
     <ClInclude Include="..\Source\MaloWLib\TCBSpline.h" />
+    <ClInclude Include="..\Source\PythonWrapper.h" />
     <ClInclude Include="..\Source\SoundEngine\SoundEngine.h" />
     <ClInclude Include="..\Source\stdafx.h" />
   </ItemGroup>
@@ -191,8 +193,8 @@
     <OutDir>../../SimCraftBin/</OutDir>
     <IntDir>../../SimCraftIntermediate/</IntDir>
     <ExecutablePath>..\Source\External\D3D\Utilities\bin\x86;$(ExecutablePath)</ExecutablePath>
-    <IncludePath>..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Source\SoundEngine\Lib\x86;..\Source\External\D3D\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\Source\External\Python\include;..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Source\External\Python\libs;..\Source\SoundEngine\Lib\x86;..\Source\External\D3D\Lib\x86;$(LibraryPath);..\Source\External\Python\libs</LibraryPath>
     <TargetName>$(ProjectName)D32</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -200,8 +202,8 @@
     <OutDir>../../SimCraftBin/</OutDir>
     <IntDir>../../SimCraftIntermediate/</IntDir>
     <ExecutablePath>..\Source\External\D3D\Utilities\bin\x64;$(ExecutablePath)</ExecutablePath>
-    <IncludePath>..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Source\SoundEngine\Lib\x64;..\Source\External\D3D\Lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\Source\External\Python\include;..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Source\External\Python\libs;..\Source\SoundEngine\Lib\x64;..\Source\External\D3D\Lib\x64;$(LibraryPath);..\Source\External\Python\libs</LibraryPath>
     <TargetName>$(ProjectName)D64</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -209,8 +211,8 @@
     <OutDir>../../SimCraftBin/</OutDir>
     <IntDir>../../SimCraftIntermediate/</IntDir>
     <ExecutablePath>..\Source\External\D3D\Utilities\bin\x86;$(ExecutablePath)</ExecutablePath>
-    <IncludePath>..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Source\SoundEngine\Lib\x86;..\Source\External\D3D\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\Source\External\Python\include;..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Source\External\Python\libs;..\Source\SoundEngine\Lib\x86;..\Source\External\D3D\Lib\x86;$(LibraryPath);..\Source\External\Python\libs</LibraryPath>
     <TargetName>$(ProjectName)R32</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -218,8 +220,8 @@
     <OutDir>../../SimCraftBin/</OutDir>
     <IntDir>../../SimCraftIntermediate/</IntDir>
     <ExecutablePath>..\Source\External\D3D\Utilities\bin\x64;$(ExecutablePath)</ExecutablePath>
-    <IncludePath>..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Source\SoundEngine\Lib\x64;..\Source\External\D3D\Lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\Source\External\Python\include;..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Source\External\Python\libs;..\Source\SoundEngine\Lib\x64;..\Source\External\D3D\Lib\x64;$(LibraryPath);..\Source\External\Python\libs</LibraryPath>
     <TargetName>$(ProjectName)R64</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -233,6 +235,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>LIBC.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
