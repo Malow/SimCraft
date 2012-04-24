@@ -10,11 +10,85 @@
 
 Python* pyth::python = NULL;
 
+
+static PyObject* SetCameraPosition(PyObject* self, PyObject* args)
+{
+	float x = 0.0f;
+	float y = 0.0f;
+	float z = 0.0f;
+	if(!PyArg_ParseTuple(args, "fff", &x, &y, &z))
+	{
+		PyErr_SetString(PyExc_RuntimeError, "GameEngine.Print wants a single string argument");
+		MaloW::Debug("SetCameraPosition arguments failed");
+		return NULL;
+	}
+
+	GetGraphicsEngine()->GetCamera()->setPosition(D3DXVECTOR3(x, y, z));
+
+	Py_INCREF(Py_None);
+	return Py_None;
+}
+
+static PyObject* CreateEntity(PyObject* self, PyObject* args)
+{
+	const char* objFile;
+	int id = 0;
+	float x = 0.0f;
+	float y = 0.0f;
+	float z = 0.0f;
+
+	if(!PyArg_ParseTuple(args, "sifff", &objFile, &id, &x, &y, &z))
+	{
+		PyErr_SetString(PyExc_RuntimeError, "GameEngine.Print wants a single string argument");
+		MaloW::Debug("CreateEntity arguments failed");
+		return NULL;
+	}
+
+	string file = string(objFile);
+
+	Entity* e = new Entity();
+	e->id = id;
+	e->mesh = GetGraphicsEngine()->CreateStaticMesh(file, D3DXVECTOR3(x, y, z));
+
+	GetPythonWrapper()->entities->add(e);
+
+	Py_INCREF(Py_None);
+	return Py_None;
+}
+
+static PyObject* DeleteEntity(PyObject* self, PyObject* args)
+{
+	int id = 0;
+
+	if(!PyArg_ParseTuple(args, "i", &id))
+	{
+		PyErr_SetString(PyExc_RuntimeError, "GameEngine.Print wants a single string argument");
+		MaloW::Debug("DeleteEntity arguments failed");
+		return NULL;
+	}
+
+	Entity* e = NULL;
+	MaloW::Array<Entity*>* ents = GetPythonWrapper()->entities;
+	for(int i = 0; i < ents->size(); i++)
+	{
+		if(ents->get(i)->id == id)
+		{
+			delete ents->getAndRemove(i);
+			i = ents->size();
+		}
+	}
+
+
+
+	Py_INCREF(Py_None);
+	return Py_None;
+}
+
 static PyMethodDef PythonMethods[] = 
 {
-	//{ "Print", WrapGameEnginePrint, METH_VARARGS, "Use GameEngine to print a message"},
-	//{ "GetValue", WrapGameEngineGetValue, METH_VARARGS, "Get a specific value" },
-	//{ "SetValue", WrapGameEngineSetValue, METH_VARARGS, "Set a specific value" },
+	{ "SetCameraPosition", SetCameraPosition, METH_VARARGS, "SetCam"},
+	{ "CreateEntity", CreateEntity, METH_VARARGS, "fuck u" },
+	{ "DeleteEntity", DeleteEntity, METH_VARARGS, "Souqgbte" },
 	//{ "SetPerson", SetPerson, METH_VARARGS, "LOL" },
 	//{ "SetLastPrintedString", SetLastPrintedString, METH_VARARGS, "LOL2" },
 	{ NULL, NULL, 0, NULL },
@@ -30,11 +104,18 @@ Python::Python()
 		MaloW::Debug("Failed to capsule Python module");
 
 	PyModule_AddObject(m_PyModule, "_C_API", capsule);
+
+	this->entities = new MaloW::Array<Entity*>();
 }
 
 Python::~Python()
 {
-
+	if(this->entities)
+	{
+		while(this->entities->size() > 0)
+			delete this->entities->getAndRemove(0);
+		delete this->entities;
+	}
 }
 
 PyObject* Python::LoadScript(string filename)
@@ -42,7 +123,7 @@ PyObject* Python::LoadScript(string filename)
 	PyObject* lpSrc =  PyString_FromString(filename.c_str());
 	if(!lpSrc) // Standard koll för null, så att vårt program inte kraschar
 	{
-		cout << "Failed to create create pyhon string" << endl;
+		cout << "Failed to create pyhon string" << endl;
 		return NULL;
 	}
 	
@@ -78,7 +159,7 @@ PyObject* Python::CallFunction(PyObject* pModule, string functionName, PyObject*
 
 	if(!lpReturnValues)
 	{
-		MaloW::Debug("Failed to call and get return values from " + string(lpSrc));
+		MaloW::Debug("Failed to get return values from " + string(lpSrc));
 		PyErr_Print();
 		Py_DECREF(lpFunction);
 		return NULL;

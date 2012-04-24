@@ -33,12 +33,11 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 	// Create the Python engine
 	Python* python = new Python();
 	pyth::python = python;
+	python = GetPythonWrapper();	// To get python anywhere
 
+	PyObject* script = python->LoadScript("Scripts.SimCraftMain");
 
-	//PyObject* script = python->LoadScript("Scripts/main");
-	PyObject* script = python->LoadScript("main");
-
-
+	float diff = ge->Update();	// To not get a high first diff
 	while(ge->isRunning())	// Returns true as long as ESC hasnt been pressed, if it's pressed the game engine will shut down itself (to be changed)
 	{
 		float diff = ge->Update();	// Updates camera etc, does NOT render the frame, another process is doing that, so diff should be very low.
@@ -46,6 +45,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 
 		PyObject* funcArgs = Py_BuildValue("(f)", diff);
 		PyObject* ret = python->CallFunction(script, "Update", funcArgs);
+		if(ret) Py_DECREF(ret);
+
 
 		if(ge->GetKeyListener()->IsPressed('W'))
 			ge->GetCamera()->moveForward(diff);

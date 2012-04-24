@@ -1,14 +1,29 @@
 -- VERSION_3
 -- START DISKCACHE
-D:\Projekt\SimCraft Projekt\SimCraft\SimCraft\SimCraft\.metadata\.plugins\org.eclipse.core.resources\.projects\Scripts\com.python.pydev.analysis\v1_indexcache
+D:\MaloW Creation\Projects\SimCraft\SimCraft\SimCraft\.metadata\.plugins\org.eclipse.core.resources\.projects\Scripts\com.python.pydev.analysis\v1_indexcache
 .v1_indexcache
+SimCraftMain|0|D:\MaloW Creation\Projects\SimCraft\SimCraft\SimCraft\Scripts\SimCraftMain.py
+main|0|D:\MaloW Creation\Projects\SimCraft\SimCraft\SimCraft\Scripts\main.py
 -- END DISKCACHE
 -- START DICTIONARY
-0
+3
+3=Person.__init__
+2=Person
+1=main
 -- END DICTIONARY
 -- START TREE 1
-0
+6
+i|1|i!11@
+myf|1|MyFunction!10@
+per|4|Person2!11@Person!9@Person1!11@Person3!11@
+pyf|1|pyFunction!10@
+set|1|settings!11@
+tic|1|tick!10@
 -- END TREE
 -- START TREE 2
-0
+4
+__i|1|__init__!2&10@
+pos|4|posy!3&11@posy!2&11@posx!3&11@posx!2&11@
+sta|2|status!3&11@status!2&11@
+tim|2|TimeToStatusChange!3&11@TimeToStatusChange!2&11@
 -- END TREE
