@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\GraphicsEngine\AnimatedMesh.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\FXAA.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\GraphicsEngine.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\Image.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Buffer.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Camera.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\CamRecording.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManager.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManagerDeferred.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManagerForwardRendering.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManagerInit.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManagerPostProcess.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManagerRender.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\FPSCamera.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Light.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Mesh.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\MeshStrip.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Object3D.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\ObjLoader.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\RTSCamera.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Shader.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Terrain.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\MorphAnimation.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\SkyBox.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\SSAO.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\StaticMesh.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\Text.cpp" />
+    <ClCompile Include="..\Source\GraphicsEngine\TextureManager.cpp" />
+    <ClCompile Include="..\Source\GUI\ChangeResEvent.cpp" />
+    <ClCompile Include="..\Source\GUI\ChangeSetEvent.cpp" />
+    <ClCompile Include="..\Source\GUI\DropDownList.cpp" />
+    <ClCompile Include="..\Source\GUI\Element.cpp" />
+    <ClCompile Include="..\Source\GUI\GUIArchButton.cpp" />
+    <ClCompile Include="..\Source\GUI\GUIEvent.cpp" />
+    <ClCompile Include="..\Source\GUI\GUISet.cpp" />
+    <ClCompile Include="..\Source\GUI\NoEvent.cpp" />
+    <ClCompile Include="..\Source\GUI\SimpleButton.cpp" />
+    <ClCompile Include="..\Source\main.cpp" />
+    <ClCompile Include="..\Source\MaloWLib\KeyListener.cpp" />
+    <ClCompile Include="..\Source\MaloWLib\Process.cpp" />
+    <ClCompile Include="..\Source\MaloWLib\TCBSpline.cpp" />
+    <ClCompile Include="..\Source\SoundEngine\SoundEngine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Source\GraphicsEngine\AnimatedMesh.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\CursorControl.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\FXAA.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\GraphicsEngine.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\Image.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Buffer.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Camera.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\CamRecording.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\DxManager.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\DxManagerDebugging.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\FPSCamera.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Light.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\GraphicsEngineParameters.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Material.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Mesh.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\MeshStrip.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Object3D.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\ObjLoader.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\RTSCamera.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Shader.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Terrain.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Vector.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Vertex.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\MorphAnimation.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\SkyBox.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\SSAO.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\StaticMesh.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\Text.h" />
+    <ClInclude Include="..\Source\GraphicsEngine\TextureManager.h" />
+    <ClInclude Include="..\Source\GUI\ChangeResEvent.h" />
+    <ClInclude Include="..\Source\GUI\ChangeSetEvent.h" />
+    <ClInclude Include="..\Source\GUI\DropDownList.h" />
+    <ClInclude Include="..\Source\GUI\Element.h" />
+    <ClInclude Include="..\Source\GUI\GUIArchButton.h" />
+    <ClInclude Include="..\Source\GUI\GUIEvent.h" />
+    <ClInclude Include="..\Source\GUI\GUISet.h" />
+    <ClInclude Include="..\Source\GUI\NoEvent.h" />
+    <ClInclude Include="..\Source\GUI\SimpleButton.h" />
+    <ClInclude Include="..\Source\MaloWLib\Array.h" />
+    <ClInclude Include="..\Source\MaloWLib\KeyListener.h" />
+    <ClInclude Include="..\Source\MaloWLib\List.h" />
+    <ClInclude Include="..\Source\MaloWLib\MaloW.h" />
+    <ClInclude Include="..\Source\MaloWLib\MaloWFileDebug.h" />
+    <ClInclude Include="..\Source\MaloWLib\Process.h" />
+    <ClInclude Include="..\Source\MaloWLib\Queue.h" />
+    <ClInclude Include="..\Source\MaloWLib\TCBSpline.h" />
+    <ClInclude Include="..\Source\SoundEngine\SoundEngine.h" />
+    <ClInclude Include="..\Source\stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\DebugNormals.fx" />
+    <None Include="Shaders\DebugWireframe.fx" />
+    <None Include="Shaders\DeferredGeometry.fx" />
+    <None Include="Shaders\DeferredLightning.fx" />
+    <None Include="Shaders\DeferredQuad.fx" />
+    <None Include="Shaders\DeferredTexture.fx" />
+    <None Include="Shaders\ForwardRendering.fx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$"(DXSDK_DIR)Utilities\bin\x64\"fxc.exe  /T fx_5_0 /Fo "%(Filename).fxo" "%(FullPath)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(InputName).fxo</Outputs>
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Shaders\FXAA.fx" />
+    <None Include="Shaders\Lava.fx" />
+    <None Include="Shaders\DeferredAnimatedGeometry.fx" />
+    <None Include="Shaders\ScreenSpaceBillBoard.fx" />
+    <None Include="Shaders\ShadowMap.fx">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"$(DXSDK_DIR)Utilities\bin\x86\"fxc.exe  /T fx_4_0 /Fo "%(Filename).fxo" "%(FullPath)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(InputName).fxo</Outputs>
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Shaders\SkyBox.fx" />
+    <None Include="Shaders\SSAO.fx" />
+    <None Include="Shaders\stdafx.fx" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FB7EE0D5-90C1-4BBD-8828-F5A39BE7D296}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SimCraft</RootNamespace>
+    <ProjectName>SimCraft</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>../../SimCraftBin/</OutDir>
+    <IntDir>../../SimCraftIntermediate/</IntDir>
+    <ExecutablePath>..\Source\External\D3D\Utilities\bin\x86;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Source\SoundEngine\Lib\x86;..\Source\External\D3D\Lib\x86;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)D32</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>../../SimCraftBin/</OutDir>
+    <IntDir>../../SimCraftIntermediate/</IntDir>
+    <ExecutablePath>..\Source\External\D3D\Utilities\bin\x64;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Source\SoundEngine\Lib\x64;..\Source\External\D3D\Lib\x64;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)D64</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../SimCraftBin/</OutDir>
+    <IntDir>../../SimCraftIntermediate/</IntDir>
+    <ExecutablePath>..\Source\External\D3D\Utilities\bin\x86;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Source\SoundEngine\Lib\x86;..\Source\External\D3D\Lib\x86;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)R32</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>../../SimCraftBin/</OutDir>
+    <IntDir>../../SimCraftIntermediate/</IntDir>
+    <ExecutablePath>..\Source\External\D3D\Utilities\bin\x64;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>..\Source\SoundEngine\Include;..\Source\GraphicsEngine\MaloWLib;..\Source\MaloWLib;..\Source\GraphicsEngine;..\Source;..\Source\External\D3D\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Source\SoundEngine\Lib\x64;..\Source\External\D3D\Lib\x64;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)R64</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

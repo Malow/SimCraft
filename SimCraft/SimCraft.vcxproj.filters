@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Game Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Graphics Engine Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Other">
+      <UniqueIdentifier>{b28a900a-ca47-4f32-8bb3-747d412b3f06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other\MaloWLib">
+      <UniqueIdentifier>{1770d7db-a2dc-4d2c-8d7a-e4d049340e03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics Engine Files\MaloWLib">
+      <UniqueIdentifier>{2a910e44-bf90-4106-9b73-0c02cc70ffd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics Engine Files\MaloWLib\DirectX">
+      <UniqueIdentifier>{e37bb7a1-c7a2-4e11-87de-483b9c34f5eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics Engine Files\Shaders">
+      <UniqueIdentifier>{3f043b24-e3c2-4300-8862-39a52b67e782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{3c6e96bd-50f7-48b5-b12a-fd1c5ea6423c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Event">
+      <UniqueIdentifier>{fb76ef5f-9c4c-4310-99a4-0b99699d03a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound Engine Files">
+      <UniqueIdentifier>{a4843cc2-979d-4f6c-9809-013d07a66b92}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\main.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\GraphicsEngine.cpp">
+      <Filter>Graphics Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\Image.cpp">
+      <Filter>Graphics Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\MaloWLib\KeyListener.cpp">
+      <Filter>Other\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\MaloWLib\Process.cpp">
+      <Filter>Other\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Camera.cpp">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\FPSCamera.cpp">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Light.cpp">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Mesh.cpp">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\MeshStrip.cpp">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\ObjLoader.cpp">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\RTSCamera.cpp">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManager.cpp">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManagerRender.cpp">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManagerInit.cpp">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Buffer.cpp">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Object3D.cpp">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Shader.cpp">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\Terrain.cpp">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GUI\Element.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GUI\GUISet.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GUI\SimpleButton.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GUI\NoEvent.cpp">
+      <Filter>GUI\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GUI\ChangeSetEvent.cpp">
+      <Filter>GUI\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\TextureManager.cpp">
+      <Filter>Graphics Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\SSAO.cpp">
+      <Filter>Graphics Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GUI\GUIEvent.cpp">
+      <Filter>GUI\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\Text.cpp">
+      <Filter>Graphics Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GUI\DropDownList.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\SkyBox.cpp">
+      <Filter>Graphics Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GUI\GUIArchButton.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\FXAA.cpp">
+      <Filter>Graphics Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GUI\ChangeResEvent.cpp">
+      <Filter>GUI\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\MaloWLib\TCBSpline.cpp">
+      <Filter>Other\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\CamRecording.cpp">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MorphAnimation.cpp">
+      <Filter>Graphics Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\SoundEngine\SoundEngine.cpp">
+      <Filter>Sound Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\AnimatedMesh.cpp">
+      <Filter>Graphics Engine Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManagerDeferred.cpp">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManagerForwardRendering.cpp">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\MaloWLib\DxManagerPostProcess.cpp">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GraphicsEngine\StaticMesh.cpp">
+      <Filter>Graphics Engine Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Source\stdafx.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\GraphicsEngine.h">
+      <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\Image.h">
+      <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\Array.h">
+      <Filter>Other\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\KeyListener.h">
+      <Filter>Other\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\List.h">
+      <Filter>Other\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\MaloW.h">
+      <Filter>Other\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\MaloWFileDebug.h">
+      <Filter>Other\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\Process.h">
+      <Filter>Other\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\Queue.h">
+      <Filter>Other\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Camera.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\FPSCamera.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Light.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Material.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Mesh.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\MeshStrip.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\ObjLoader.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\RTSCamera.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Vertex.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\DxManager.h">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\DxManagerDebugging.h">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Buffer.h">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Object3D.h">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Shader.h">
+      <Filter>Graphics Engine Files\MaloWLib\DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Terrain.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\GraphicsEngineParameters.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\Vector.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GUI\Element.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GUI\GUISet.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GUI\SimpleButton.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GUI\NoEvent.h">
+      <Filter>GUI\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GUI\ChangeSetEvent.h">
+      <Filter>GUI\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\TextureManager.h">
+      <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\SSAO.h">
+      <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GUI\GUIEvent.h">
+      <Filter>GUI\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\Text.h">
+      <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GUI\DropDownList.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\SkyBox.h">
+      <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GUI\GUIArchButton.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\FXAA.h">
+      <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GUI\ChangeResEvent.h">
+      <Filter>GUI\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\TCBSpline.h">
+      <Filter>Other\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MaloWLib\CamRecording.h">
+      <Filter>Graphics Engine Files\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\CursorControl.h">
+      <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\MorphAnimation.h">
+      <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\SoundEngine\SoundEngine.h">
+      <Filter>Sound Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\AnimatedMesh.h">
+      <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GraphicsEngine\StaticMesh.h">
+      <Filter>Graphics Engine Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\DebugNormals.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\DebugWireframe.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\DeferredGeometry.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\DeferredLightning.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\ScreenSpaceBillBoard.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\ForwardRendering.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\FXAA.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\ShadowMap.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\SSAO.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\DeferredQuad.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\DeferredTexture.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\Lava.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\SkyBox.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\stdafx.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\DeferredAnimatedGeometry.fx">
+      <Filter>Graphics Engine Files\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
