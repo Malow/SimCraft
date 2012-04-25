@@ -30,6 +30,26 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 	gfxeng::eng = ge; // Set the global eng to our engine so that GetGraphicsEngine(); can work.
 	ge->CreateSkyBox("Media/skymap.dds");
 
+	// Create the Terrain and lights etc
+	ge->GetCamera()->setPosition(D3DXVECTOR3(100, 40, 100));
+	Terrain* terrain = ge->CreateTerrain(D3DXVECTOR3(0, -1, 0), D3DXVECTOR3(200, 1, 200), "Media/TerrainTexture.png", "", 256);
+	Light* light = ge->CreateLight(D3DXVECTOR3(50, 50, 50));
+	Light* light2 = ge->CreateLight(D3DXVECTOR3(150, 50, 50));
+	Light* light3 = ge->CreateLight(D3DXVECTOR3(50, 50, 150));
+	Light* light4 = ge->CreateLight(D3DXVECTOR3(150, 50, 150));
+	float inte = 100.0f;
+	light->SetIntensity(inte);
+	light2->SetIntensity(inte);
+	light3->SetIntensity(inte);
+	light4->SetIntensity(inte);
+
+	/*
+	// Test meshes
+	Mesh* treeTest = ge->CreateStaticMesh("Media/Tree.obj", D3DXVECTOR3(100, 0, 100));
+	Mesh* foodBushTest = ge->CreateStaticMesh("Media/FoodBush.obj", D3DXVECTOR3(75, 0, 100));
+	Mesh* humanTest = ge->CreateStaticMesh("Media/Human.obj", D3DXVECTOR3(125, 0, 100));
+	*/
+
 	// Create the Python engine
 	Python* python = new Python();
 	pyth::python = python;
@@ -48,6 +68,16 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 		if(ret) Py_DECREF(ret);
 
 
+		// Make lights face your way
+		D3DXVECTOR3 spot = ge->GetCamera()->getPosition();
+		spot.z += spot.y / 2.0f;
+		spot.y = 0.0f;
+		light->SetLookAt(spot);
+		light2->SetLookAt(spot);
+		light3->SetLookAt(spot);
+		light4->SetLookAt(spot);
+
+		// Key inputs
 		if(ge->GetKeyListener()->IsPressed('W'))
 			ge->GetCamera()->moveForward(diff);
 		if(ge->GetKeyListener()->IsPressed('A'))
@@ -57,7 +87,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 		if(ge->GetKeyListener()->IsPressed('D'))	// For keys other than the main-chars you use the VK_ Enums, rightclick on VK_RETURN and "Go to definition" to find the list of all keys
 			ge->GetCamera()->moveRight(diff);
 		if(ge->GetKeyListener()->IsClicked(1))
-			ge->GetCamera()->moveBackward(diff);
+			ge->GetCamera()->setPosition(ge->GetCamera()->getPosition() - D3DXVECTOR3(0, 0.01f, 0) * diff);
+		if(ge->GetKeyListener()->IsClicked(2))
+			ge->GetCamera()->setPosition(ge->GetCamera()->getPosition() + D3DXVECTOR3(0, 0.01f, 0) * diff);
 	}
 
 
