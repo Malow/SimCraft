@@ -49,7 +49,6 @@ static PyObject* CreateEntity(PyObject* self, PyObject* args)
 	Entity* e = new Entity();
 	e->id = id;
 	e->mesh = GetGraphicsEngine()->CreateStaticMesh(file, D3DXVECTOR3(x, y, z));
-
 	GetPythonWrapper()->entities->add(e);
 
 	Py_INCREF(Py_None);
@@ -75,9 +74,10 @@ static PyObject* DeleteEntity(PyObject* self, PyObject* args)
 		{
 			delete ents->getAndRemove(i);
 			i = ents->size();
+			MaloW::Debug("Found Ya");
 		}
 	}
-
+	MaloW::Debug("Should have deleted");
 
 
 	Py_INCREF(Py_None);
