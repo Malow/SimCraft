@@ -74,10 +74,9 @@ static PyObject* DeleteEntity(PyObject* self, PyObject* args)
 		{
 			delete ents->getAndRemove(i);
 			i = ents->size();
-			MaloW::Debug("Found Ya");
+			MaloW::Debug(id);
 		}
 	}
-	MaloW::Debug("Should have deleted");
 
 
 	Py_INCREF(Py_None);

@@ -62,7 +62,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 	{
 		float diff = ge->Update();	// Updates camera etc, does NOT render the frame, another process is doing that, so diff should be very low.
 
-
 		PyObject* funcArgs = Py_BuildValue("(f)", diff);
 		PyObject* ret = python->CallFunction(script, "Update", funcArgs);
 		if(ret) Py_DECREF(ret);
