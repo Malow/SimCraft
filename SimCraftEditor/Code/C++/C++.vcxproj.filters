@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="MaloWEngine">
+      <UniqueIdentifier>{519968b9-eea7-45f1-9088-41f6c4902a5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MaloWEngine\EngineFiles">
+      <UniqueIdentifier>{19ad70c9-c2dc-4fe8-be14-5460c83ab83a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MaloWEngine\GUI">
+      <UniqueIdentifier>{21132f8c-5125-41bb-a4a0-3cbac5f69251}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MaloWEngine\Other">
+      <UniqueIdentifier>{2ea78d4b-6ecb-44c5-9927-d9eead60f842}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MaloWEngine\Sound">
+      <UniqueIdentifier>{17dc760e-109d-403e-b3a9-f680e7d0bd20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MaloWEngine\EngineFiles\MaloWLib">
+      <UniqueIdentifier>{d1c7310c-1216-4c22-97ef-4c662cdc0e2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MaloWEngine\EngineFiles\Shaders">
+      <UniqueIdentifier>{5aa59b04-f2d6-44a1-9f16-9625892e364f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\stdafx.h">
+      <Filter>MaloWEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\AnimatedMesh.h">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\CursorControl.h">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\FXAA.h">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\GraphicsEngine.h">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\Image.h">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MorphAnimation.h">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\SkyBox.h">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\SSAO.h">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\StaticMesh.h">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\Text.h">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\TextureManager.h">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\Buffer.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\Camera.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\CamRecording.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\DxManager.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\DxManagerDebugging.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\FPSCamera.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\GraphicsEngineParameters.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\Light.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\Material.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\Mesh.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\MeshStrip.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\Object3D.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\ObjLoader.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\RTSCamera.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\Shader.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\Terrain.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\Vector.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GraphicsEngine\MaloWLib\Vertex.h">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\ChangeResEvent.h">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\ChangeSetEvent.h">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\DropDownList.h">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\Element.h">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\GUIArchButton.h">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\GUIEvent.h">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\GUISet.h">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\NoEvent.h">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\GUI\SimpleButton.h">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\SoundEngine\SoundEngine.h">
+      <Filter>MaloWEngine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\MaloWLib\Array.h">
+      <Filter>MaloWEngine\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\MaloWLib\KeyListener.h">
+      <Filter>MaloWEngine\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\MaloWLib\List.h">
+      <Filter>MaloWEngine\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\MaloWLib\MaloW.h">
+      <Filter>MaloWEngine\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\MaloWLib\MaloWFileDebug.h">
+      <Filter>MaloWEngine\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\MaloWLib\Process.h">
+      <Filter>MaloWEngine\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\MaloWLib\Queue.h">
+      <Filter>MaloWEngine\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\MaloWLib\TCBSpline.h">
+      <Filter>MaloWEngine\Other</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\AnimatedMesh.cpp">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\FXAA.cpp">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\GraphicsEngine.cpp">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\Image.cpp">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MorphAnimation.cpp">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\SkyBox.cpp">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\SSAO.cpp">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\StaticMesh.cpp">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\Text.cpp">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\TextureManager.cpp">
+      <Filter>MaloWEngine\EngineFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\Buffer.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\Camera.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\CamRecording.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\DxManager.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\DxManagerDeferred.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\DxManagerForwardRendering.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\DxManagerInit.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\DxManagerPostProcess.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\DxManagerRender.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\FPSCamera.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\Light.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\Mesh.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\MeshStrip.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\Object3D.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\ObjLoader.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\RTSCamera.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\Shader.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GraphicsEngine\MaloWLib\Terrain.cpp">
+      <Filter>MaloWEngine\EngineFiles\MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\ChangeResEvent.cpp">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\ChangeSetEvent.cpp">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\DropDownList.cpp">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\Element.cpp">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\GUIArchButton.cpp">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\GUIEvent.cpp">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\GUISet.cpp">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\NoEvent.cpp">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\GUI\SimpleButton.cpp">
+      <Filter>MaloWEngine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\SoundEngine\SoundEngine.cpp">
+      <Filter>MaloWEngine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\MaloWLib\KeyListener.cpp">
+      <Filter>MaloWEngine\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\MaloWLib\Process.cpp">
+      <Filter>MaloWEngine\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\MaloWLib\TCBSpline.cpp">
+      <Filter>MaloWEngine\Other</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\SimCraft\Shaders\DebugNormals.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\DebugWireframe.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\DeferredAnimatedGeometry.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\DeferredGeometry.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\DeferredLightning.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\DeferredQuad.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\DeferredTexture.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\ForwardRendering.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\FXAA.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\Lava.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\ScreenSpaceBillBoard.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\ShadowMap.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\SkyBox.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\SSAO.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+    <None Include="..\..\..\SimCraft\Shaders\stdafx.fx">
+      <Filter>MaloWEngine\EngineFiles\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>

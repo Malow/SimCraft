@@ -80,6 +80,7 @@ private:
 
 public:
 	GraphicsEngine(GraphicsEngineParams params, HINSTANCE hInstance, int nCmdShow);
+	GraphicsEngine(GraphicsEngineParams params, HWND hWnd, int nCmdShow);
 	virtual ~GraphicsEngine();
 
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
