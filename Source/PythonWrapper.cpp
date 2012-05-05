@@ -16,6 +16,7 @@ Python* pyth::python = NULL;
 	{ "DeleteEntity", DeleteEntity, METH_VARARGS, "i" },
 	{ "SetPosition", SetPerson, METH_VARARGS, "ifff" },
 	{ "SetScale", SetScale, METH_VARARGS, "if" },
+	{ "Debug", PyDebug, METH_VARARGS, "s" },
 */
 
 static PyObject* SetCameraPosition(PyObject* self, PyObject* args)
@@ -140,6 +141,25 @@ static PyObject* SetScale(PyObject* self, PyObject* args)
 	return Py_None;
 }
 
+static PyObject* PyDebug(PyObject* self, PyObject* args)
+{
+	const char* c;
+	
+	if(!PyArg_ParseTuple(args, "s", &c))
+	{
+		PyErr_SetString(PyExc_RuntimeError, "GameEngine.Print wants a single string argument");
+		MaloW::Debug("PyDebug arguments failed");
+		return NULL;
+	}
+
+	string s = string(c);
+
+	MaloW::Debug(s);
+
+	Py_INCREF(Py_None);
+	return Py_None;
+}
+
 static PyMethodDef PythonMethods[] = 
 {
 	{ "SetCameraPosition", SetCameraPosition, METH_VARARGS, "fff"},
@@ -147,6 +167,7 @@ static PyMethodDef PythonMethods[] =
 	{ "DeleteEntity", DeleteEntity, METH_VARARGS, "i" },
 	{ "SetPosition", SetPosition, METH_VARARGS, "ifff" },
 	{ "SetScale", SetScale, METH_VARARGS, "if" },
+	{ "Debug", PyDebug, METH_VARARGS, "s" },
 	//{ "SetLastPrintedString", SetLastPrintedString, METH_VARARGS, "LOL2" },
 	{ NULL, NULL, 0, NULL },
 };
