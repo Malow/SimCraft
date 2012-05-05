@@ -32,10 +32,10 @@ def Update(time):
 	
 	for onePerson in persons:
 		temp = onePerson.Update(time)
-		if temp == 1:
-			Python.SetCameraPosition(0,0,0)
-		elif temp == 2:
-			Python.SetCameraPosition(100,40,100)
+		#if temp == 1:
+		#	Python.SetCameraPosition(0,0,0)
+		#elif temp == 2:
+		#	Python.SetCameraPosition(100,40,100)
 	totaltime += time
 	if totaltime > 5000:
 		tempPerson = Person.Person(id, 10, "male", (id * 2 + 150), 0, (id * 2 + 150))
@@ -43,16 +43,16 @@ def Update(time):
 		Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , (id * 2 + 150), (0), (id * 2 + 150))
 		id += 1
 		totaltime = 0
-	
-	for tempPerson in persons:
-		if tempPerson.GetID() == 0:
-			Python.DeleteEntity(tempPerson.GetID())
-			persons.remove(tempPerson)
-		if tempPerson.GetID() == 1:
-			Python.DeleteEntity(tempPerson.GetID())
-			persons.remove(tempPerson)
-		if tempPerson.GetID() == 2:
-			Python.DeleteEntity(tempPerson.GetID())
-			persons.remove(tempPerson)
+	if id > 4:
+		for tempPerson in persons:
+			if tempPerson.GetID() == 1:
+				Python.DeleteEntity(tempPerson.GetID())
+				persons.remove(tempPerson)
+			if tempPerson.GetID() == 2:
+				Python.DeleteEntity(tempPerson.GetID())
+				persons.remove(tempPerson)
+			if tempPerson.GetID() == 3:
+				Python.DeleteEntity(tempPerson.GetID())
+				persons.remove(tempPerson)
 			
 	return 1 == 1
