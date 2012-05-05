@@ -226,6 +226,12 @@ void Python::PrintErr()
 			
 	PyErr_Fetch(&a, &b, &c);
 
+	if(!b || !c)
+	{
+		MaloW::Debug("Error in PrintErr()");
+		return;
+	}
+
 	string s(PyString_AsString(b));
 
 
