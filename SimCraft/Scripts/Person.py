@@ -34,18 +34,21 @@ class Person(ScriptedEntity):
 		self.__age = age
 		self.__sex = sex
 		
-	def Update(self, deltaTime):
+	def Update(self, deltaTime, id):
+		incID = 0
 		self.__TimeUntillSleep = self.__TimeUntillSleep - deltaTime
+		
 		if self.__goingToDo == "CollectFood":
 			self.__foodCollected = self.__foodCollected + (1 * deltaTime)
 		elif self.__goingToDo == "Sleep":
-			return 1
+			i = 0
 			
 		if self.__foodCollected < self.__foodReq:
 			self.__goingToDo = "CollectFood"
-			return 2
 		else:
 			self.__goingToDo = "Sleep"
+			
+		return incID
 		
 	def WalkTo(self, to):
 		ScriptedEntity.SetPosition(self, to[0], to[1], to[2])
