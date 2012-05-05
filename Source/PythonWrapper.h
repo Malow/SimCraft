@@ -37,6 +37,8 @@ public:
 	PyObject* CallFunction(PyObject* pModule, string functionName, PyObject* lpFunctionArgs);
 
 	MaloW::Array<Entity*>* entities;
+
+	void PrintErr();
 };
 
 

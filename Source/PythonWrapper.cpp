@@ -10,6 +10,12 @@
 
 Python* pyth::python = NULL;
 
+/*
+	{ "SetCameraPosition", SetCameraPosition, METH_VARARGS, "fff"},
+	{ "CreateEntity", CreateEntity, METH_VARARGS, "sifff" },
+	{ "DeleteEntity", DeleteEntity, METH_VARARGS, "i" },
+	{ "SetPosition", SetPerson, METH_VARARGS, "ifff" },
+*/
 
 static PyObject* SetCameraPosition(PyObject* self, PyObject* args)
 {
@@ -66,7 +72,6 @@ static PyObject* DeleteEntity(PyObject* self, PyObject* args)
 		return NULL;
 	}
 
-	Entity* e = NULL;
 	MaloW::Array<Entity*>* ents = GetPythonWrapper()->entities;
 	for(int i = 0; i < ents->size(); i++)
 	{
@@ -74,7 +79,6 @@ static PyObject* DeleteEntity(PyObject* self, PyObject* args)
 		{
 			delete ents->getAndRemove(i);
 			i = ents->size();
-			MaloW::Debug(id);
 		}
 	}
 
@@ -83,12 +87,39 @@ static PyObject* DeleteEntity(PyObject* self, PyObject* args)
 	return Py_None;
 }
 
+static PyObject* SetPosition(PyObject* self, PyObject* args)
+{
+	int id = 0;
+	float x = 0.0f;
+	float y = 0.0f;
+	float z = 0.0f;
+	if(!PyArg_ParseTuple(args, "ifff", &id, &x, &y, &z))
+	{
+		PyErr_SetString(PyExc_RuntimeError, "GameEngine.Print wants a single string argument");
+		MaloW::Debug("SetPosition arguments failed");
+		return NULL;
+	}
+
+	MaloW::Array<Entity*>* ents = GetPythonWrapper()->entities;
+	for(int i = 0; i < ents->size(); i++)
+	{
+		if(ents->get(i)->id == id)
+		{
+			ents->get(i)->mesh->SetPosition(D3DXVECTOR3(x, y, z));
+			i = ents->size();
+		}
+	}
+
+	Py_INCREF(Py_None);
+	return Py_None;
+}
+
 static PyMethodDef PythonMethods[] = 
 {
-	{ "SetCameraPosition", SetCameraPosition, METH_VARARGS, "SetCam"},
-	{ "CreateEntity", CreateEntity, METH_VARARGS, "fuck u" },
-	{ "DeleteEntity", DeleteEntity, METH_VARARGS, "Souqgbte" },
-	//{ "SetPerson", SetPerson, METH_VARARGS, "LOL" },
+	{ "SetCameraPosition", SetCameraPosition, METH_VARARGS, "fff"},
+	{ "CreateEntity", CreateEntity, METH_VARARGS, "sifff" },
+	{ "DeleteEntity", DeleteEntity, METH_VARARGS, "i" },
+	{ "SetPosition", SetPosition, METH_VARARGS, "ifff" },
 	//{ "SetLastPrintedString", SetLastPrintedString, METH_VARARGS, "LOL2" },
 	{ NULL, NULL, 0, NULL },
 };
@@ -132,7 +163,7 @@ PyObject* Python::LoadScript(string filename)
 	if(!lpPy)
 	{
 		if(PyErr_Occurred())
-			PyErr_Print();
+			this->PrintErr();
 		MaloW::Debug("Failed to load python script");
 	}
 	return lpPy;
@@ -145,7 +176,7 @@ PyObject* Python::CallFunction(PyObject* pModule, string functionName, PyObject*
 	if(!lpFunction || (!PyCallable_Check(lpFunction)))
 	{
 		if(PyErr_Occurred())
-			PyErr_Print();
+			this->PrintErr();
 
 		MaloW::Debug("Can not find " + string(lpSrc) + " or its not a callable function");
 		Py_XDECREF(lpFunction);  // Plocka bort referensen av vår python string, XDECREF är null terminerad
@@ -159,7 +190,7 @@ PyObject* Python::CallFunction(PyObject* pModule, string functionName, PyObject*
 	if(!lpReturnValues)
 	{
 		MaloW::Debug("Failed to get return values from " + string(lpSrc));
-		PyErr_Print();
+		this->PrintErr();
 		Py_DECREF(lpFunction);
 		return NULL;
 	}
@@ -183,4 +214,33 @@ PyObject* Python::CallFunction(PyObject* pModule, string functionName, PyObject*
 
 
 	return lpReturnValues;
+}
+
+#include <frameobject.h>
+
+void Python::PrintErr()
+{
+	PyObject* a = NULL; 
+	PyObject* b = NULL;
+	PyObject* c = NULL;
+			
+	PyErr_Fetch(&a, &b, &c);
+
+	string s(PyString_AsString(b));
+
+
+	PyErr_NormalizeException(&a, &b, &c);
+
+	PyTracebackObject* traceback = (PyTracebackObject*)c;
+	// Advance to the last frame (python puts the most-recent call at the end)
+	while (traceback->tb_next != NULL)
+		traceback = traceback->tb_next;
+
+
+	MaloW::Debug("Python error:");
+	MaloW::Debug(s);
+	MaloW::Debug("Line: " + traceback->tb_lineno);
+	MaloW::Debug("File: " + string(PyString_AsString(traceback->tb_frame->f_code->co_filename)));
+	MaloW::Debug("Module: " + string(PyString_AsString(traceback->tb_frame->f_code->co_name)));
+	MaloW::Debug("");
 }
