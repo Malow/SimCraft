@@ -40,7 +40,7 @@ def Update(time):
 		Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , (id * 2 + 150), (0), (id * 2 + 150))
 		id += 1
 		totaltime = 0
-	if id > 4:
+	if id > 3:
 		for tempPerson in persons:
 			if isinstance(tempPerson, Person):
 				if tempPerson.GetID() == 1:
@@ -49,7 +49,7 @@ def Update(time):
 				if tempPerson.GetID() == 2:
 					Python.DeleteEntity(tempPerson.GetID())
 					persons.remove(tempPerson)
-				if tempPerson.GetID() == 3:
+				if tempPerson.GetID() == 0:
 					Python.DeleteEntity(tempPerson.GetID())
 					persons.remove(tempPerson)
 			
