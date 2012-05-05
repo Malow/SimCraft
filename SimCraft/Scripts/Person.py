@@ -27,7 +27,7 @@ class Person(ScriptedEntity):
 	__foodCollected = 0
 	__goingToDo = "unknown"
 	__goingToPos = [0,0,0]
-	__TimeUntillSleep = 43200 # 60 * 60 * 12
+	__TimeUntillSleep = 60 * 60 * 8 # sec * min * tim
 	
 	def __init__(self, ID, age, sex, x, y, z):
 		ScriptedEntity.__init__(self, ID, x, y, z)
