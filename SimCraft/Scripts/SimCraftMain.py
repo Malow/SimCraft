@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 # Koden ovan låter oss använda svenska tecken i python, den måste ligga först
 
 # Created by: Ermin Hrkalovic (ERH)

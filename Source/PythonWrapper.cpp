@@ -236,11 +236,11 @@ void Python::PrintErr()
 	while (traceback->tb_next != NULL)
 		traceback = traceback->tb_next;
 
-
-	MaloW::Debug("Python error:");
+	MaloW::Debug("");
+	MaloW::Debug("Python code error:");
 	MaloW::Debug(s);
-	MaloW::Debug("Line: " + traceback->tb_lineno);
+	MaloW::Debug("Line: " + MaloW::convertNrToString(traceback->tb_lineno));
 	MaloW::Debug("File: " + string(PyString_AsString(traceback->tb_frame->f_code->co_filename)));
-	MaloW::Debug("Module: " + string(PyString_AsString(traceback->tb_frame->f_code->co_name)));
+	MaloW::Debug("Function: " + string(PyString_AsString(traceback->tb_frame->f_code->co_name)));
 	MaloW::Debug("");
 }
