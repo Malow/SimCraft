@@ -15,6 +15,7 @@ Python* pyth::python = NULL;
 	{ "CreateEntity", CreateEntity, METH_VARARGS, "sifff" },
 	{ "DeleteEntity", DeleteEntity, METH_VARARGS, "i" },
 	{ "SetPosition", SetPerson, METH_VARARGS, "ifff" },
+	{ "SetScale", SetScale, METH_VARARGS, "if" },
 */
 
 static PyObject* SetCameraPosition(PyObject* self, PyObject* args)
@@ -114,12 +115,38 @@ static PyObject* SetPosition(PyObject* self, PyObject* args)
 	return Py_None;
 }
 
+static PyObject* SetScale(PyObject* self, PyObject* args)
+{
+	int id = 0;
+	float scale = 0.0f;
+	if(!PyArg_ParseTuple(args, "if", &id, &scale))
+	{
+		PyErr_SetString(PyExc_RuntimeError, "GameEngine.Print wants a single string argument");
+		MaloW::Debug("SetScale arguments failed");
+		return NULL;
+	}
+
+	MaloW::Array<Entity*>* ents = GetPythonWrapper()->entities;
+	for(int i = 0; i < ents->size(); i++)
+	{
+		if(ents->get(i)->id == id)
+		{
+			ents->get(i)->mesh->Scale(scale);
+			i = ents->size();
+		}
+	}
+
+	Py_INCREF(Py_None);
+	return Py_None;
+}
+
 static PyMethodDef PythonMethods[] = 
 {
 	{ "SetCameraPosition", SetCameraPosition, METH_VARARGS, "fff"},
 	{ "CreateEntity", CreateEntity, METH_VARARGS, "sifff" },
 	{ "DeleteEntity", DeleteEntity, METH_VARARGS, "i" },
 	{ "SetPosition", SetPosition, METH_VARARGS, "ifff" },
+	{ "SetScale", SetScale, METH_VARARGS, "if" },
 	//{ "SetLastPrintedString", SetLastPrintedString, METH_VARARGS, "LOL2" },
 	{ NULL, NULL, 0, NULL },
 };
@@ -232,7 +259,14 @@ void Python::PrintErr()
 		return;
 	}
 
-	string s(PyString_AsString(b));
+	char* temp = PyString_AsString(b);
+	if(!temp)
+	{
+		MaloW::Debug("Error in PrintErr()");
+		return;
+	}
+
+	string s(temp);
 
 
 	PyErr_NormalizeException(&a, &b, &c);
