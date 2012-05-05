@@ -28,6 +28,7 @@ id += 1
 def Update(time):
 	global totaltime
 	global id
+	global persons
 	
 	for onePerson in persons:
 		temp = onePerson.Update(time)
