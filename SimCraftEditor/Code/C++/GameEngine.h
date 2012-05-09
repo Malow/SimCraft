@@ -19,9 +19,7 @@ private:
 
 	int m_ScreenWidth;
 	int m_ScreenHeight;
-private:
-	void RenderFunc();
-	bool FrameFunc();
+
 public:
 	GameEngine();
 	~GameEngine();
@@ -29,8 +27,10 @@ public:
 	HRESULT Init(HWND hWnd, int width, int height);
 	HRESULT Shutdown();
 
-	HRESULT ProcessFrame();
+	HRESULT Update();
 	HRESULT OnResize(int width, int height);
+
+	GraphicsEngine* GetEngine() { return this->eng; }
 
 	char* ProcessText(char* msg);
 };

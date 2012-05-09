@@ -62,4 +62,25 @@ namespace System { namespace Windows { namespace Interop
 		return returnText;
 	}
 
+	void CppCLI::KeyDown(int key) 
+	{ 
+		if(m_GameEngine)
+			m_GameEngine->KeyDown(key); 
+	}
+	void CppCLI::KeyUp(int key) 
+	{ 
+		if(m_GameEngine)
+			m_GameEngine->KeyUp(key); 
+	}
+	void CppCLI::MouseDown(int button) 
+	{ 
+		if(m_GameEngine)
+			m_GameEngine->MouseDown(button); 
+	}
+	void CppCLI::MouseUp(int button) 
+	{ 
+		if(m_GameEngine)
+			m_GameEngine->MouseUp(button); 
+	}
+
 }}}

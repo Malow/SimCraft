@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Interop;
 
+
 namespace Example
 {
     public partial class form1 : Form
@@ -16,6 +17,9 @@ namespace Example
         bool m_APILoaded = false;
 
         bool m_TextBoxChanged = false;
+
+
+
 
         public form1()
         {
@@ -26,7 +30,58 @@ namespace Example
             this.ResizeEnd += new EventHandler(form1_ResizeEnd);
             this.Resize += new EventHandler(form1_Resize);
 
-            this.TextBoxToRender.MouseClick += new MouseEventHandler(TextBoxToRender_MouseClick);
+            //this.TextBoxToRender.MouseClick += new MouseEventHandler(TextBoxToRender_MouseClick);
+            this.RenderBox.MouseDown += new MouseEventHandler(RenderBox_MouseDown);
+            this.RenderBox.MouseUp += new MouseEventHandler(RenderBox_MouseUp);
+            //this.RenderBox.PreviewKeyDown += new KeyEventHandler(
+
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(RenderBox_KeyDown);
+            this.KeyUp += new KeyEventHandler(RenderBox_KeyUp);
+            this.KeyPress += new KeyPressEventHandler(RenderBox_KeyPress);
+
+        }
+
+        void RenderBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (MousePosition.X > this.PointToScreen(RenderBox.Location).X &&
+                MousePosition.X < this.PointToScreen(RenderBox.Location).X + RenderBox.Size.Width)
+            {
+                if (MousePosition.Y > this.PointToScreen(RenderBox.Location).Y &&
+                        MousePosition.Y < this.PointToScreen(RenderBox.Location).Y + RenderBox.Size.Height)
+                {
+                    
+                    m_GameEngine.KeyDown((int)e.KeyCode);
+                    
+                }
+            }
+           
+        }
+
+        void RenderBox_KeyUp(Object sender, KeyEventArgs e)
+        {
+            /*
+            if (MousePosition.X > this.PointToScreen(RenderBox.Location).X &&
+                MousePosition.X < this.PointToScreen(RenderBox.Location).X + RenderBox.Size.Width)
+            {
+                if (MousePosition.Y > this.PointToScreen(RenderBox.Location).Y &&
+                        MousePosition.Y < this.PointToScreen(RenderBox.Location).Y + RenderBox.Size.Height)
+                {*/
+                    m_GameEngine.KeyUp((int)e.KeyCode);
+               // }
+          //  }
+        }
+        void RenderBox_KeyPress(Object sender, KeyPressEventArgs e)
+        {
+            if (MousePosition.X > this.PointToScreen(RenderBox.Location).X &&
+                MousePosition.X < this.PointToScreen(RenderBox.Location).X + RenderBox.Size.Width)
+            {
+                if (MousePosition.Y > this.PointToScreen(RenderBox.Location).Y &&
+                        MousePosition.Y < this.PointToScreen(RenderBox.Location).Y + RenderBox.Size.Height)
+                {
+                    e.Handled = true;
+                }
+            }
         }
 
         public void GameLoop()
@@ -75,14 +130,44 @@ namespace Example
         {
             if (!m_TextBoxChanged)
             {
-                TextBoxToRender.Text = "";
                 m_TextBoxChanged = true;
             }
         }
 
+        void RenderBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+            int button = 0;
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    button = 1;
+                    break;
+                case MouseButtons.Right:
+                    button = 2;
+                    break;
+            }
+            m_GameEngine.MouseDown(button);
+        }
+        void RenderBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            int button = 0;
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    button = 1;
+                    break;
+                case MouseButtons.Right:
+                    button = 2;
+                    break;
+            }
+            m_GameEngine.MouseUp(button);
+        }
+
+
         private void InitAPI_Click(object sender, EventArgs e)
         {
-            if (apiToLoad.Text == "HGE")
+            if (apiToLoad.Text == "MaloWEngine")
             {
                 m_GameEngine.Init(RenderBox.Handle, RenderBox.Width, RenderBox.Height);
                 m_APILoaded = true;
@@ -95,7 +180,7 @@ namespace Example
 
         private void PrintTextBoxText_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(m_GameEngine.ProcessText(TextBoxToRender.Text), "MessageBox", MessageBoxButtons.OK);
+            
         }
     }
 }

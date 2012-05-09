@@ -37,9 +37,9 @@ GraphicsEngine::GraphicsEngine(GraphicsEngineParams params, HWND hWnd, int nCmdS
 		this->fpsLast = 0;
 		this->fpsTimer = 0;
 	}
+	this->hWnd = hWnd;
 	this->InitObjects();
 	this->initDone = true;
-	this->hWnd = hWnd;
 
 	this->Start();
 }
