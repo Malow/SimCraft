@@ -89,7 +89,7 @@ HRESULT DxManager::Init()
 	}
 	if( FAILED(hr) )
 		return hr;
-	
+
 	// Create a render target view
 	ID3D11Texture2D* pBackBuffer;
 	hr = Dx_SwapChain->GetBuffer( 0, __uuidof( ID3D11Texture2D ), (LPVOID*)&pBackBuffer );

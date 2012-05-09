@@ -126,6 +126,7 @@ public:
 
 
 	bool isRunning();
+	void SetSleepInRenderingThread(int sleepfor) { this->dx->SleepFor = sleepfor; }
 
 	// Get's
 	Camera* GetCamera() const { return this->dx->GetCamera(); }

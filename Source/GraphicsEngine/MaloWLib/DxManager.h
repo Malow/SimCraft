@@ -142,6 +142,7 @@ private:
 	
 
 public:
+	int SleepFor;
 	DxManager(HWND g_hWnd, GraphicsEngineParams params, Camera* cam);
 	virtual ~DxManager();
 

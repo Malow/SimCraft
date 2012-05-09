@@ -2,6 +2,7 @@
 
 DxManager::DxManager(HWND g_hWnd, GraphicsEngineParams params, Camera* cam)
 {
+	this->SleepFor = 0;
 	this->params = params;
 	this->hWnd = g_hWnd;
 
@@ -44,14 +45,20 @@ DxManager::DxManager(HWND g_hWnd, GraphicsEngineParams params, Camera* cam)
 	this->framecount = 0;
 	this->TriangleCount = 0;
 
+
+
 	this->camera = cam;
 	if(FAILED(this->Init()))
 		MaloW::Debug("Failed to init DxManager");
+
+
 
 	this->TimerAnimation = 0.0f;
 	LARGE_INTEGER li;
 	if(!QueryPerformanceFrequency(&li))
 		MaloW::Debug("QueryPerformanceFrequency Failed!, High resolution performance counter not available?");
+
+
 
 	this->PCFreq = float(li.QuadPart)/1000.0f;
 	QueryPerformanceCounter(&li);

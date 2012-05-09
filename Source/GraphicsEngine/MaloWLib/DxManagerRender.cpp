@@ -286,6 +286,9 @@ void DxManager::RenderImages()
 
 HRESULT DxManager::Render()
 {
+	if(this->SleepFor > 0)
+		Sleep(SleepFor);
+
 	// Timer
 	LARGE_INTEGER li;
 	QueryPerformanceCounter(&li);

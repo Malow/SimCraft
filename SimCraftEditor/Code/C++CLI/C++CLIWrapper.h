@@ -36,6 +36,11 @@ namespace System { namespace Windows { namespace Interop
 		HRESULT ProcessFrame();
 		HRESULT OnResize(int width, int height);
 
+		void KeyDown(int key);
+		void KeyUp(int key);
+		void MouseDown(int button);
+		void MouseUp(int button);
+
 		String^ ProcessText(String^ text);
 	};
 }}}

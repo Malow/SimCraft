@@ -57,7 +57,6 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.TextBoxToRender = new System.Windows.Forms.TextBox();
             this.PrintTextBoxText = new System.Windows.Forms.Button();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -66,6 +65,7 @@
             this.apiToLoad = new System.Windows.Forms.ToolStripComboBox();
             this.RenderBox = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -82,7 +82,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1361, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -280,29 +280,21 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.TextBoxToRender);
+            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.PrintTextBoxText);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(284, 24);
+            this.panel1.Location = new System.Drawing.Point(1161, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 228);
+            this.panel1.Size = new System.Drawing.Size(200, 719);
             this.panel1.TabIndex = 1;
-            // 
-            // TextBoxToRender
-            // 
-            this.TextBoxToRender.Location = new System.Drawing.Point(6, 5);
-            this.TextBoxToRender.Name = "TextBoxToRender";
-            this.TextBoxToRender.Size = new System.Drawing.Size(100, 20);
-            this.TextBoxToRender.TabIndex = 2;
-            this.TextBoxToRender.Text = "Insert text here";
             // 
             // PrintTextBoxText
             // 
-            this.PrintTextBoxText.Location = new System.Drawing.Point(112, 5);
+            this.PrintTextBoxText.Location = new System.Drawing.Point(6, 684);
             this.PrintTextBoxText.Name = "PrintTextBoxText";
-            this.PrintTextBoxText.Size = new System.Drawing.Size(42, 23);
+            this.PrintTextBoxText.Size = new System.Drawing.Size(182, 23);
             this.PrintTextBoxText.TabIndex = 0;
-            this.PrintTextBoxText.Text = "Print";
+            this.PrintTextBoxText.Text = "Create Entity";
             this.PrintTextBoxText.UseVisualStyleBackColor = true;
             this.PrintTextBoxText.Click += new System.EventHandler(this.PrintTextBoxText_Click);
             // 
@@ -312,13 +304,13 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(284, 0);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1161, 0);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Top;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 24);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(284, 25);
+            this.toolStripContainer1.Size = new System.Drawing.Size(1161, 25);
             this.toolStripContainer1.TabIndex = 2;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -335,7 +327,7 @@
             this.apiToLoad});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(118, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(193, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // InitAPI
@@ -356,9 +348,9 @@
             // apiToLoad
             // 
             this.apiToLoad.Items.AddRange(new object[] {
-            "HGE"});
+            "MaloWEngine"});
             this.apiToLoad.Name = "apiToLoad";
-            this.apiToLoad.Size = new System.Drawing.Size(75, 25);
+            this.apiToLoad.Size = new System.Drawing.Size(150, 25);
             // 
             // RenderBox
             // 
@@ -366,22 +358,34 @@
             this.RenderBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RenderBox.Location = new System.Drawing.Point(0, 49);
             this.RenderBox.Name = "RenderBox";
-            this.RenderBox.Size = new System.Drawing.Size(284, 203);
+            this.RenderBox.Size = new System.Drawing.Size(1161, 694);
             this.RenderBox.TabIndex = 3;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 230);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 721);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(284, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1161, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Human",
+            "Food Bush",
+            "Tree"});
+            this.comboBox1.Location = new System.Drawing.Point(6, 4);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(182, 21);
+            this.comboBox1.TabIndex = 1;
             // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 252);
+            this.ClientSize = new System.Drawing.Size(1361, 743);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.RenderBox);
             this.Controls.Add(this.toolStripContainer1);
@@ -394,7 +398,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
@@ -442,9 +445,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripComboBox apiToLoad;
         private System.Windows.Forms.Panel RenderBox;
-        private System.Windows.Forms.TextBox TextBoxToRender;
         private System.Windows.Forms.Button PrintTextBoxText;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

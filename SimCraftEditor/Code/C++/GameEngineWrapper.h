@@ -26,6 +26,11 @@ public:
 	HRESULT ProcessFrame();
 	HRESULT OnResize(int width, int height);
 
+	void KeyDown(char key);
+	void KeyUp(char key);
+	void MouseDown(int button);
+	void MouseUp(int button);
+
 	char* ProcessText(char* msg);
 };
 
