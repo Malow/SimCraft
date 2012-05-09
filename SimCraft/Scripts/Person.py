@@ -1,6 +1,6 @@
 import Python
 import SimCraftMain
-
+from Vector3 import Vector3
 class ScriptedEntity():
     __ID = 0
     __x = 0
@@ -22,7 +22,7 @@ class ScriptedEntity():
         self.__x = x
         self.__y = y
         self.__z = z
-import SimCraftMain
+		
 class Person(ScriptedEntity):
 	__age = 0
 	__sex = "unknown"
