@@ -1,3 +1,6 @@
+import Python
+import SimCraftMain
+
 class ScriptedEntity():
     __ID = 0
     __x = 0
@@ -19,7 +22,7 @@ class ScriptedEntity():
         self.__x = x
         self.__y = y
         self.__z = z
-
+import SimCraftMain
 class Person(ScriptedEntity):
 	__age = 0
 	__sex = "unknown"
@@ -34,9 +37,14 @@ class Person(ScriptedEntity):
 		self.__age = age
 		self.__sex = sex
 		
-	def Update(self, deltaTime, id):
-		incID = 0
+	def Update(self, deltaTime, entities, entId):
 		self.__TimeUntillSleep = self.__TimeUntillSleep - deltaTime
+		
+		if entId == 4:
+			tempPerson = Person(entId, 10, "male", (115), 0, (115))
+			entities.append(tempPerson)
+			Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), (115), 0, (115))
+			entId += 1
 		
 		if self.__goingToDo == "CollectFood":
 			self.__foodCollected = self.__foodCollected + (1 * deltaTime)
@@ -47,14 +55,11 @@ class Person(ScriptedEntity):
 			self.__goingToDo = "CollectFood"
 		else:
 			self.__goingToDo = "Sleep"
-			
-		return incID
+		
+		return entId
 		
 	def WalkTo(self, to):
 		ScriptedEntity.SetPosition(self, to[0], to[1], to[2])
-	
-	def GetID(self):
-		return ScriptedEntity.GetID(self)
 		
 	def GetAge(self):
 		return self.__age

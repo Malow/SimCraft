@@ -4,53 +4,52 @@
 #Call by reference
 #
 
-import Python # Ladda in vår c++ modul GameEngine
+import Python # Ladda in vår c++ modul Python
 # -*- coding: utf-8 -*-
 from Person import Person
 
 totaltime = 0
-id = 0
-persons = []
+entId = int(0)
+entities = []
 
-tempPerson = Person(id, 40, "female", 112, 0, 112)
-persons.append(tempPerson)
+tempPerson = Person(entId, 40, "female", 112, 0, 112)
+entities.append(tempPerson)
 Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , (112), (0), (112))
-id += 1
-tempPerson = Person(id, 42, "male", 108, 0, 108)
-persons.append(tempPerson)
+entId += 1
+tempPerson = Person(entId, 42, "male", 108, 0, 108)
+entities.append(tempPerson)
 Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , (108), (0), (108))
-id += 1
-tempPerson = Person(id, 15, "male", 110, 0, 110)
-persons.append(tempPerson)
+entId += 1
+tempPerson = Person(entId, 15, "male", 110, 0, 110)
+entities.append(tempPerson)
 Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , (110), (0), (110))
-id += 1
+entId += 1
 
 def Update(time):
 	global totaltime
-	global id
-	global persons
-	
-	for onePerson in persons:
-		id += onePerson.Update(time, id)
+	global entId
+	global entities
+	for onePerson in entities:
+		entId = onePerson.Update(time, entities, entId)
 		
 	totaltime += time
 	if totaltime > 5000:
-		tempPerson = Person(id, 10, "male", (id * 2 + 150), 0, (id * 2 + 150))
-		persons.append(tempPerson)
-		Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , (id * 2 + 150), (0), (id * 2 + 150))
-		id += 1
+		tempPerson = Person(entId, 10, "male", (entId * 2 + 150), 0, (entId * 2 + 150))
+		entities.append(tempPerson)
+		Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , (entId * 2 + 150), (0), (entId * 2 + 150))
+		entId += 1
 		totaltime = 0
-	if id > 3:
-		for tempPerson in persons:
+	if entId > 5:
+		for tempPerson in entities:
 			if isinstance(tempPerson, Person):
 				if tempPerson.GetID() == 1:
 					Python.DeleteEntity(tempPerson.GetID())
-					persons.remove(tempPerson)
+					entities.remove(tempPerson)
 				if tempPerson.GetID() == 2:
 					Python.DeleteEntity(tempPerson.GetID())
-					persons.remove(tempPerson)
-				if tempPerson.GetID() == 0:
+					entities.remove(tempPerson)
+				if tempPerson.GetID() == 4:
 					Python.DeleteEntity(tempPerson.GetID())
-					persons.remove(tempPerson)
+					entities.remove(tempPerson)
 			
 	return 1 == 1
