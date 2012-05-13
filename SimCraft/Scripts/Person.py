@@ -1,55 +1,69 @@
 import Python
 import SimCraftMain
 from Vector3 import Vector3
+
 class ScriptedEntity():
     __ID = 0
-    __x = 0
-    __y = 0
-    __z = 0
-    def __init__(self, ID, x, y, z):
+    __Pos = Vector3(0,0,0)
+	
+    def __init__(self, ID, pos):
         self.__ID = ID
-        self.__x = x
-        self.__y = y
-        self.__z = z
+        self.__Pos = pos
         
     def GetID(self):
         return self.__ID
     
     def GetPosition(self):
-        return self.__x, self.__y, self.__z
+        return self.__Pos
     
-    def SetPosition(self, x , y, z):
-        self.__x = x
-        self.__y = y
-        self.__z = z
+    def SetPosition(self, x, y, z):
+        self.__Pos = Vector3(x, y, z)
 		
 class Person(ScriptedEntity):
 	__age = 0
 	__sex = "unknown"
-	__foodReq = 1000
+	__foodReq = 5
 	__foodCollected = 0
 	__goingToDo = "unknown"
-	__goingToPos = [0,0,0]
-	__TimeUntillSleep = 60 * 60 * 8 # sec * min * tim
+	__goingToPos = Vector3(0, 0, 0)
+	__timeUntillSleep = 60 * 60 * 8 # sec * min * tim
+	__walkSpeed = 100
+	__home = Vector3(0,0,0)
 	
-	def __init__(self, ID, age, sex, x, y, z):
-		ScriptedEntity.__init__(self, ID, x, y, z)
+	def __init__(self, ID, age, sex, pos):
+		ScriptedEntity.__init__(self, ID, pos)
 		self.__age = age
 		self.__sex = sex
+		self.__home = Vector3(10 * ID + 50, 0 , 10 * ID + 50)
 		
 	def Update(self, deltaTime, entities, entId):
-		self.__TimeUntillSleep = self.__TimeUntillSleep - deltaTime
+		self.__timeUntillSleep = self.__timeUntillSleep - deltaTime
 		
-		if entId == 4:
-			tempPerson = Person(entId, 10, "male", (115), 0, (115))
-			entities.append(tempPerson)
-			Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), (115), 0, (115))
-			entId += 1
+		#if entId == 4:
+		#	tempPerson = Person(entId, 10, "male", Vector3(2, 0, 2))
+		#	entities.append(tempPerson)
+		#	pos = entities[entId].GetPosition()
+		#	Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
+		#	entId += 1
 		
 		if self.__goingToDo == "CollectFood":
-			self.__foodCollected = self.__foodCollected + (1 * deltaTime)
+		
+			if self.GetPosition() == self.__goingToPos:
+			
+				if self.__foodCollected < self.__foodReq:
+					self.__foodCollected = self.__foodCollected + (1 * deltaTime)
+				else:
+					self.__goingToDo == "Sleep"
+					
+			else:
+				self.WalkTo(self.__goingToPos, deltaTime)
+				
 		elif self.__goingToDo == "Sleep":
-			i = 0
+		
+			if self.GetPosition() == self.__home:
+				i = 0
+			else:
+				self.WalkTo(self.__home, deltaTime)
 			
 		if self.__foodCollected < self.__foodReq:
 			self.__goingToDo = "CollectFood"
@@ -58,8 +72,16 @@ class Person(ScriptedEntity):
 		
 		return entId
 		
-	def WalkTo(self, to):
-		ScriptedEntity.SetPosition(self, to[0], to[1], to[2])
+	def WalkTo(self, to, deltaTime):
+		walkingVec = to - self.GetPosition()
+		if walkingVec.Length() > 1:
+			walkingVec.Normalize()
+			newPos = self.GetPosition() + (walkingVec * (self.__walkSpeed * deltaTime))
+		else:
+			newPos = to
+			
+		ScriptedEntity.SetPosition(self, newPos.x, newPos.y, newPos.z)
+		Python.SetPosition(self.GetID(), newPos.x, newPos.y, newPos.z)
 		
 	def GetAge(self):
 		return self.__age
