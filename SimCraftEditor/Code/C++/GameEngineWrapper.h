@@ -16,6 +16,7 @@ class DLL_USAGE GameEngineWrapper
 {
 private:
 	GameEngine* m_GameEngine;
+
 public:
 	GameEngineWrapper();
 	~GameEngineWrapper();
@@ -30,6 +31,12 @@ public:
 	void KeyUp(char key);
 	void MouseDown(int button);
 	void MouseUp(int button);
+
+	void DeleteUnitClosestToArrow();
+
+	void CreateHuman(bool male, int age);
+	void CreateTree(int age, int wood);
+	void CreateFoodBush(int food);
 
 	char* ProcessText(char* msg);
 };

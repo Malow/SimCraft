@@ -178,9 +178,43 @@ namespace Example
             }
         }
 
-        private void PrintTextBoxText_Click(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            HumanPanel.Hide();
+            FoodBushPanel.Hide();
+            TreePanel.Hide();
+
+            // Save the selected employee's name, because we will remove
+            // the employee's name from the list.
+            string unit = (string)UnitList.SelectedItem;
+            if (unit == "Human")
+                HumanPanel.Show();
+            else if (unit == "Tree")
+                TreePanel.Show();
+            else if (unit ==  "Food Bush")
+                FoodBushPanel.Show();
+        }
+
+        private void CreateUnitButton_Click(object sender, EventArgs e)
+        {
+            HumanPanel.Hide();
+            FoodBushPanel.Hide();
+            TreePanel.Hide();
+
+            // Save the selected employee's name, because we will remove
+            // the employee's name from the list.
+            string unit = (string)UnitList.SelectedItem;
+            if (unit == "Human")
+                m_GameEngine.CreateHuman(HumanMale.Checked, Convert.ToInt32(HumanAge.Text));
+            else if (unit == "Tree")
+                m_GameEngine.CreateTree(Convert.ToInt32(TreeAge.Text), Convert.ToInt32(TreeWood.Text));
+            else if (unit == "Food Bush")
+                m_GameEngine.CreateFoodBush(Convert.ToInt32(FoodBushFood.Text));
+        }
+
+        private void DeleteUnitButton_Click(object sender, EventArgs e)
+        {
+            m_GameEngine.DeleteUnitClosestToArrow();
         }
     }
 }

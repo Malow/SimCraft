@@ -83,4 +83,26 @@ namespace System { namespace Windows { namespace Interop
 			m_GameEngine->MouseUp(button); 
 	}
 
+	void CppCLI::DeleteUnitClosestToArrow()
+	{
+		if(m_GameEngine)
+			m_GameEngine->DeleteUnitClosestToArrow(); 
+	}
+
+	void CppCLI::CreateHuman(bool male, int age)
+	{
+		if(m_GameEngine)
+			m_GameEngine->CreateHuman(male, age);
+	}
+	void CppCLI::CreateTree(int age, int wood)
+	{
+		if(m_GameEngine)
+			m_GameEngine->CreateTree(age, wood);
+	}
+	void CppCLI::CreateFoodBush(int food)
+	{
+		if(m_GameEngine)
+			m_GameEngine->CreateFoodBush(food);
+	}
+
 }}}

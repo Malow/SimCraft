@@ -40,22 +40,64 @@ char* GameEngineWrapper::ProcessText(char* msg)
 void GameEngineWrapper::KeyDown(char key) 
 { 
 	if(GraphicsEngine* eng = this->m_GameEngine->GetEngine())
-		eng->GetKeyListener()->KeyDown(key); 
+	{
+		if((int)key == 38)
+			eng->GetKeyListener()->KeyDown(VK_UP); 
+		else if((int)key == 40)
+			eng->GetKeyListener()->KeyDown(VK_DOWN); 
+		else if((int)key == 37)
+			eng->GetKeyListener()->KeyDown(VK_LEFT); 
+		else if((int)key == 39)
+			eng->GetKeyListener()->KeyDown(VK_RIGHT); 
+		else
+			eng->GetKeyListener()->KeyDown(key); 
+	}
 }
 void GameEngineWrapper::KeyUp(char key) 
 { 
 	if(GraphicsEngine* eng = this->m_GameEngine->GetEngine())
-		eng->GetKeyListener()->KeyUp(key); 
+	{
+		if((int)key == 38)
+			eng->GetKeyListener()->KeyUp(VK_UP); 
+		else if((int)key == 40)
+			eng->GetKeyListener()->KeyUp(VK_DOWN); 
+		else if((int)key == 37)
+			eng->GetKeyListener()->KeyUp(VK_LEFT); 
+		else if((int)key == 39)
+			eng->GetKeyListener()->KeyUp(VK_RIGHT); 
+		else
+			eng->GetKeyListener()->KeyUp(key); 
+	}
 }
 void GameEngineWrapper::MouseDown(int button) 
 { 
-	MaloW::Debug("MD: " + MaloW::convertNrToString(button));
 	if(GraphicsEngine* eng = this->m_GameEngine->GetEngine())
 		eng->GetKeyListener()->MouseDown(button); 
 }
 void GameEngineWrapper::MouseUp(int button) 
 { 
-	MaloW::Debug("MU: " + MaloW::convertNrToString(button));
 	if(GraphicsEngine* eng = this->m_GameEngine->GetEngine())
 		eng->GetKeyListener()->MouseUp(button); 
+}
+
+void GameEngineWrapper::DeleteUnitClosestToArrow()
+{
+	if(this->m_GameEngine)
+		this->m_GameEngine->DeleteUnitClosestToArrow();
+}
+
+void GameEngineWrapper::CreateHuman(bool male, int age)
+{
+	if(m_GameEngine)
+		m_GameEngine->CreateHuman(male, age);
+}
+void GameEngineWrapper::CreateTree(int age, int wood)
+{
+	if(m_GameEngine)
+		m_GameEngine->CreateTree(age, wood);
+}
+void GameEngineWrapper::CreateFoodBush(int food)
+{
+	if(m_GameEngine)
+		m_GameEngine->CreateFoodBush(food);
 }

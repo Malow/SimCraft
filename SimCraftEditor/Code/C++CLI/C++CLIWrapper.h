@@ -41,6 +41,13 @@ namespace System { namespace Windows { namespace Interop
 		void MouseDown(int button);
 		void MouseUp(int button);
 
+		void DeleteUnitClosestToArrow();
+
+		void CreateHuman(bool male, int age);
+		void CreateTree(int age, int wood);
+		void CreateFoodBush(int food);
+
+
 		String^ ProcessText(String^ text);
 	};
 }}}
