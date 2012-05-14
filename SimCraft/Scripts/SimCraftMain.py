@@ -3,29 +3,60 @@
 #Compare lists
 #Call by reference
 #
-
+from Vector3 import Vector3
 import Python # Ladda in vår c++ modul Python
 # -*- coding: utf-8 -*-
 from Person import Person
 
+#v1 = Vector3(0,0,0)
+#v2 = Vector3(2,2,2)
+#v3 = Vector3(1,1,1)
+#v4 = v3 - v3
 totaltime = 0
 entId = int(0)
 entities = []
 
-tempPerson = Person(entId, 40, "female", 112, 0, 112)
+tempPerson = Person(entId, 40, "female", Vector3(112, 0, 112))
 entities.append(tempPerson)
-Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , (112), (0), (112))
+pos = entities[entId].GetPosition()
+Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
 entId += 1
-tempPerson = Person(entId, 42, "male", 108, 0, 108)
+
+tempPerson = Person(entId, 42, "male", Vector3(108, 0, 108))
 entities.append(tempPerson)
-Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , (108), (0), (108))
+pos = entities[entId].GetPosition()
+Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
 entId += 1
-tempPerson = Person(entId, 15, "male", 110, 0, 110)
+
+tempPerson = Person(entId, 15, "male", Vector3(110, 0, 110))
 entities.append(tempPerson)
-Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , (110), (0), (110))
+pos = entities[entId].GetPosition()
+Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
 entId += 1
 
 def Update(time):
+	time /= 1000
+	##if v1 == v3:
+	##	Python.Debug("Wrong")
+	##else:
+	##	Python.Debug("Correct")
+	##if v1 == v1:
+	##	Python.Debug("Correct1")
+	##else:
+	##	Python.Debug("Wrong1")
+	##if v4 == v4:
+	##	Python.Debug("Correct2")
+	##else:
+	##	Python.Debug("Wrong2")
+	##if v2.Length()/2 == v3.Length():
+	##	Python.Debug("Correct3")
+	##else:
+	##	Python.Debug("Wrong3")
+	##if v2 == v3*2:
+	##	Python.Debug("Correct4")
+	##else:
+	##	Python.Debug("Wrong4")
+		
 	global totaltime
 	global entId
 	global entities
@@ -33,10 +64,11 @@ def Update(time):
 		entId = onePerson.Update(time, entities, entId)
 		
 	totaltime += time
-	if totaltime > 5000:
-		tempPerson = Person(entId, 10, "male", (entId * 2 + 150), 0, (entId * 2 + 150))
+	if totaltime > 5:
+		tempPerson = Person(entId, 10, "male", Vector3((entId * 2 + 150), 0, (entId * 2 + 150)))
 		entities.append(tempPerson)
-		Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , (entId * 2 + 150), (0), (entId * 2 + 150))
+		pos = entities[entId].GetPosition()
+		Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , pos.x, pos.y, pos.z)
 		entId += 1
 		totaltime = 0
 	if entId > 5:
@@ -45,11 +77,14 @@ def Update(time):
 				if tempPerson.GetID() == 1:
 					Python.DeleteEntity(tempPerson.GetID())
 					entities.remove(tempPerson)
+					entId -= 1
 				if tempPerson.GetID() == 2:
 					Python.DeleteEntity(tempPerson.GetID())
 					entities.remove(tempPerson)
+					entId -= 1
 				if tempPerson.GetID() == 4:
 					Python.DeleteEntity(tempPerson.GetID())
 					entities.remove(tempPerson)
+					entId -= 1
 			
 	return 1 == 1
