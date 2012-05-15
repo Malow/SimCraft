@@ -38,6 +38,10 @@ public:
 	void CreateTree(int age, int wood);
 	void CreateFoodBush(int food);
 
+	void SaveToPath(char* path);
+	void LoadFromPath(char* path);
+	void ResetScene();
+
 	char* ProcessText(char* msg);
 };
 

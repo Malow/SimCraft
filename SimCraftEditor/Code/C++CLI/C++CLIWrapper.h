@@ -47,6 +47,9 @@ namespace System { namespace Windows { namespace Interop
 		void CreateTree(int age, int wood);
 		void CreateFoodBush(int food);
 
+		void SaveToPath(String^ path);
+		void LoadFromPath(String^ path);
+		void ResetScene();
 
 		String^ ProcessText(String^ text);
 	};

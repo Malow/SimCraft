@@ -105,4 +105,50 @@ namespace System { namespace Windows { namespace Interop
 			m_GameEngine->CreateFoodBush(food);
 	}
 
+	void CppCLI::SaveToPath(String^ path)
+	{
+		if(m_GameEngine)
+		{
+			char* lpText = nullptr;
+
+			//Konvertera String^ -> char*
+			try
+			{
+				lpText = (char*)Marshal::StringToHGlobalAnsi(path).ToPointer();
+				m_GameEngine->SaveToPath(lpText);
+			}
+			finally
+			{
+				Marshal::FreeHGlobal((IntPtr) const_cast<char*>(lpText)); // Free memory
+			}
+
+		}
+	}
+
+	void CppCLI::LoadFromPath(String^ path)
+	{
+		if(m_GameEngine)
+		{
+			char* lpText = nullptr;
+
+			//Konvertera String^ -> char*
+			try
+			{
+				lpText = (char*)Marshal::StringToHGlobalAnsi(path).ToPointer();
+				m_GameEngine->LoadFromPath(lpText);
+			}
+			finally
+			{
+				Marshal::FreeHGlobal((IntPtr) const_cast<char*>(lpText)); // Free memory
+			}
+
+		}
+	}
+
+	void CppCLI::ResetScene()
+	{
+		if(m_GameEngine)
+			m_GameEngine->ResetScene();
+	}
+
 }}}

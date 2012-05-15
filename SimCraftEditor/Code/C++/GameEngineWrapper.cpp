@@ -91,13 +91,33 @@ void GameEngineWrapper::CreateHuman(bool male, int age)
 	if(m_GameEngine)
 		m_GameEngine->CreateHuman(male, age);
 }
+
 void GameEngineWrapper::CreateTree(int age, int wood)
 {
 	if(m_GameEngine)
 		m_GameEngine->CreateTree(age, wood);
 }
+
 void GameEngineWrapper::CreateFoodBush(int food)
 {
 	if(m_GameEngine)
 		m_GameEngine->CreateFoodBush(food);
+}
+
+void GameEngineWrapper::SaveToPath(char* path)
+{
+	if(m_GameEngine)
+		m_GameEngine->SaveToPath(path);
+}
+
+void GameEngineWrapper::LoadFromPath(char* path)
+{
+	if(m_GameEngine)
+		m_GameEngine->LoadFromPath(path);
+}
+
+void GameEngineWrapper::ResetScene()
+{
+	if(m_GameEngine)
+		m_GameEngine->ResetScene();
 }

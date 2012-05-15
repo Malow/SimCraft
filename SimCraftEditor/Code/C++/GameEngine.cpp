@@ -1,6 +1,7 @@
 //File: GameEngine.h
 
 #include "GameEngine.h"
+#include <fstream>
 
 GameEngine::GameEngine()
 {
@@ -139,11 +140,13 @@ void GameEngine::CreateHuman(bool male, int age)
 {
 	Unit* unit = new Unit();
 	unit->type = HUMAN;
+	unit->male = male;
 	unit->mesh = this->eng->CreateStaticMesh("Media/Human.obj", this->arrow->GetPosition());
 	unit->age = age;
 	unit->resources = 0;
 	this->units.add(unit);
 }
+
 void GameEngine::CreateTree(int age, int wood)
 {
 	Unit* unit = new Unit();
@@ -153,6 +156,7 @@ void GameEngine::CreateTree(int age, int wood)
 	unit->resources = wood;
 	this->units.add(unit);
 }
+
 void GameEngine::CreateFoodBush(int food)
 {
 	Unit* unit = new Unit();
@@ -161,4 +165,132 @@ void GameEngine::CreateFoodBush(int food)
 	unit->age = 0;
 	unit->resources = food;
 	this->units.add(unit);
+}
+
+void GameEngine::SaveToPath(char* path)
+{
+	ofstream out;
+	out.open(path);
+
+	out << this->units.size() << endl;
+	out << endl;
+
+	for(int i = 0; i < this->units.size(); i++)
+	{
+		Unit* unit = this->units.get(i);
+		if(unit->type == HUMAN)
+		{
+			out << "Human" << endl;
+			out << unit->male << endl;
+			out << unit->age << endl;
+			
+		}
+		else if(unit->type == TREE)
+		{
+			out << "Tree" << endl;
+			out << unit->age << endl;
+			out << unit->resources << endl;
+		}
+		else if(unit->type == FOOD_BUSH)
+		{
+			out << "Food Bush" << endl;
+			out << unit->resources << endl;
+		}
+
+		out << unit->mesh->GetPosition().x << endl;
+		out << unit->mesh->GetPosition().y << endl;
+		out << unit->mesh->GetPosition().z << endl;
+
+		out << endl;
+	}
+
+	out.close();
+}
+
+void GameEngine::LoadFromPath(char* path)
+{
+	this->ResetScene();
+
+	ifstream in;
+	in.open(path);
+	int nrOfUnits = 0;
+	string line = "";
+
+	getline(in, line);
+	nrOfUnits = atoi(line.c_str());
+
+	getline(in, line);
+
+	for(int i = 0; i < nrOfUnits; i++)
+	{
+		getline(in, line);
+		if(line == "Human")
+		{
+			getline(in, line);
+			bool male = atoi(line.c_str());
+			getline(in, line);
+			int age = atoi(line.c_str());
+
+			getline(in, line);
+			float x = atof(line.c_str());
+			getline(in, line);
+			float y = atof(line.c_str());
+			getline(in, line);
+			float z = atof(line.c_str());
+			this->arrow->SetPosition(D3DXVECTOR3(x, y, z));
+
+			this->CreateHuman(male, age);
+		}
+		else if(line == "Tree")
+		{
+			getline(in, line);
+			int age = atoi(line.c_str());
+			getline(in, line);
+			int wood = atoi(line.c_str());
+
+			getline(in, line);
+			float x = atof(line.c_str());
+			getline(in, line);
+			float y = atof(line.c_str());
+			getline(in, line);
+			float z = atof(line.c_str());
+			this->arrow->SetPosition(D3DXVECTOR3(x, y, z));
+
+			this->CreateTree(age, wood);
+		}
+		else if(line == "Food Bush")
+		{
+			getline(in, line);
+			int food = atoi(line.c_str());
+
+			getline(in, line);
+			float x = atof(line.c_str());
+			getline(in, line);
+			float y = atof(line.c_str());
+			getline(in, line);
+			float z = atof(line.c_str());
+			this->arrow->SetPosition(D3DXVECTOR3(x, y, z));
+
+			this->CreateFoodBush(food);
+		}
+
+		getline(in, line);
+	}
+
+	in.close();
+
+
+	this->arrow->SetPosition(D3DXVECTOR3(100, 0, 130));
+}
+
+void GameEngine::ResetScene()
+{
+	eng->GetCamera()->setPosition(D3DXVECTOR3(100, 40, 100));
+	this->arrow->SetPosition(D3DXVECTOR3(100, 0, 130));
+
+	while(this->units.size() > 0)
+	{
+		this->eng->DeleteStaticMesh(this->units.get(0)->mesh);
+		delete this->units.getAndRemove(0);
+	}
 }

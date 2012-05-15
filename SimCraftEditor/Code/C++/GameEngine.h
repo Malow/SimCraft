@@ -23,6 +23,7 @@ struct Unit
 {
 	StaticMesh* mesh;
 	UNIT_TYPE type;
+	bool male;
 	int age;
 	int resources;
 };
@@ -54,6 +55,10 @@ public:
 	void CreateHuman(bool male, int age);
 	void CreateTree(int age, int wood);
 	void CreateFoodBush(int food);
+
+	void SaveToPath(char* path);
+	void LoadFromPath(char* path);
+	void ResetScene();
 
 	char* ProcessText(char* msg);
 };
