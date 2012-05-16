@@ -29,7 +29,7 @@ class Vector3():
 		return 1 == 2
 	
 	def Length(self):
-		return math.sqrt(math.pow(self.x, 2) + math.pow(self.y, 2) + math.pow(self.z, 2))
+		return math.fabs(math.sqrt(math.pow(self.x, 2) + math.pow(self.y, 2) + math.pow(self.z, 2)))
 		
 	def Normalize(self):
 		length = self.Length()

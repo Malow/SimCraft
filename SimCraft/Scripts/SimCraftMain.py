@@ -19,23 +19,23 @@ entities = []
 tempPerson = Person(entId, 40, "female", Vector3(112, 0, 112))
 entities.append(tempPerson)
 pos = entities[entId].GetPosition()
-Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
+Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
 entId += 1
 
-tempPerson = Person(entId, 42, "male", Vector3(108, 0, 108))
-entities.append(tempPerson)
-pos = entities[entId].GetPosition()
-Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
-entId += 1
+#tempPerson = Person(entId, 42, "male", Vector3(108, 0, 108))
+#entities.append(tempPerson)
+#pos = entities[entId].GetPosition()
+#Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
+#entId += 1
 
-tempPerson = Person(entId, 15, "male", Vector3(110, 0, 110))
-entities.append(tempPerson)
-pos = entities[entId].GetPosition()
-Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
-entId += 1
+#tempPerson = Person(entId, 15, "male", Vector3(110, 0, 110))
+#entities.append(tempPerson)
+#pos = entities[entId].GetPosition()
+#Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
+#entId += 1
 
 def Update(time):
-	time /= 1000
+	time /= 10000
 	##if v1 == v3:
 	##	Python.Debug("Wrong")
 	##else:
@@ -64,27 +64,27 @@ def Update(time):
 		entId = onePerson.Update(time, entities, entId)
 		
 	totaltime += time
-	if totaltime > 5:
+	if totaltime < 0:
 		tempPerson = Person(entId, 10, "male", Vector3((entId * 2 + 150), 0, (entId * 2 + 150)))
 		entities.append(tempPerson)
-		pos = entities[entId].GetPosition()
+		for entity in entities:
+			if entity.GetID() == entId:
+				pos = entity.GetPosition()
 		Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , pos.x, pos.y, pos.z)
 		entId += 1
 		totaltime = 0
-	if entId > 5:
+		
+	if entId > 500:
 		for tempPerson in entities:
 			if isinstance(tempPerson, Person):
 				if tempPerson.GetID() == 1:
 					Python.DeleteEntity(tempPerson.GetID())
 					entities.remove(tempPerson)
-					entId -= 1
 				if tempPerson.GetID() == 2:
 					Python.DeleteEntity(tempPerson.GetID())
 					entities.remove(tempPerson)
-					entId -= 1
 				if tempPerson.GetID() == 4:
 					Python.DeleteEntity(tempPerson.GetID())
 					entities.remove(tempPerson)
-					entId -= 1
 			
 	return 1 == 1
