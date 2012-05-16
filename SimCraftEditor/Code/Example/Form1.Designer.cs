@@ -56,10 +56,10 @@
             this.UnitList = new System.Windows.Forms.ComboBox();
             this.CreateUnitButton = new System.Windows.Forms.Button();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.DeleteUnitButton = new System.Windows.Forms.ToolStripButton();
             this.RenderBox = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.DeleteUnitButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.TreePanel.SuspendLayout();
@@ -100,7 +100,7 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -109,7 +109,7 @@
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -123,14 +123,14 @@
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveAsToolStripMenuItem.Text = "Save &As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
@@ -334,6 +334,27 @@
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DeleteUnitButton});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(171, 25);
+            this.toolStrip1.TabIndex = 0;
+            // 
+            // DeleteUnitButton
+            // 
+            this.DeleteUnitButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.DeleteUnitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DeleteUnitButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteUnitButton.Image")));
+            this.DeleteUnitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeleteUnitButton.Name = "DeleteUnitButton";
+            this.DeleteUnitButton.Size = new System.Drawing.Size(159, 22);
+            this.DeleteUnitButton.Text = "Delete Unit Closest to Arrow";
+            this.DeleteUnitButton.Click += new System.EventHandler(this.DeleteUnitButton_Click);
+            // 
             // RenderBox
             // 
             this.RenderBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -351,27 +372,6 @@
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // DeleteUnitButton
-            // 
-            this.DeleteUnitButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.DeleteUnitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.DeleteUnitButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteUnitButton.Image")));
-            this.DeleteUnitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DeleteUnitButton.Name = "DeleteUnitButton";
-            this.DeleteUnitButton.Size = new System.Drawing.Size(159, 22);
-            this.DeleteUnitButton.Text = "Delete Unit Closest to Arrow";
-            this.DeleteUnitButton.Click += new System.EventHandler(this.DeleteUnitButton_Click);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DeleteUnitButton});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(171, 25);
-            this.toolStrip1.TabIndex = 0;
-            // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,7 +385,8 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(500, 290);
             this.Name = "form1";
-            this.Text = "C# Example";
+            this.Text = "SimCraft Level-Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form1_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);

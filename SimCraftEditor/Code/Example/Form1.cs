@@ -290,5 +290,12 @@ namespace Example
                 this.changeHasBeenMade = false;
             }
         }
+
+        private void form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.changeHasBeenMade)
+                if (MessageBox.Show("Your map has not beed saved, do you wish to save?", "Do you wish to Save?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    this.Save();
+        }
     }
 }
