@@ -25,7 +25,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 	params.ShadowMapSettings = 6;	// 0 - 10 (works with higher but VERY consuming)
 	params.CamType = RTS;
 	
-	// Create the graph	ics engine
+	// Create the graphics engine
 	GraphicsEngine* ge = new GraphicsEngine(params, hInstance, nCmdShow);
 	gfxeng::eng = ge; // Set the global eng to our engine so that GetGraphicsEngine(); can work.
 	ge->CreateSkyBox("Media/skymap.dds");
@@ -43,13 +43,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 	light3->SetIntensity(inte);
 	light4->SetIntensity(inte);
 
-	/*
-	// Test meshes
-	Mesh* treeTest = ge->CreateStaticMesh("Media/Tree.obj", D3DXVECTOR3(100, 0, 100));
-	Mesh* foodBushTest = ge->CreateStaticMesh("Media/FoodBush.obj", D3DXVECTOR3(75, 0, 100));
-	Mesh* humanTest = ge->CreateStaticMesh("Media/Human.obj", D3DXVECTOR3(125, 0, 100));
-	*/
-
 	// Create the Python engine
 	Python* python = new Python();
 	pyth::python = python;
@@ -57,12 +50,23 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 
 	PyObject* script = python->LoadScript("Scripts.SimCraftMain");
 
+	// Load Map:
+		
+	PyObject* funcArgs = Py_BuildValue("(s)", "TestMap1.txt");
+	PyObject* ret = python->CallFunction(script, "LoadMap", funcArgs);
+	if(ret) Py_DECREF(ret);
+	
+	
+	float SPEED_MUTLIPLIER = 1;
+	bool SpeedPlus = true;
+	bool SpeedMinus = true;
+
 	float diff = ge->Update();	// To not get a high first diff
 	while(ge->isRunning())	// Returns true as long as ESC hasnt been pressed, if it's pressed the game engine will shut down itself (to be changed)
 	{
 		float diff = ge->Update();	// Updates camera etc, does NOT render the frame, another process is doing that, so diff should be very low.
 
-		PyObject* funcArgs = Py_BuildValue("(f)", diff);
+		PyObject* funcArgs = Py_BuildValue("(f)", diff * SPEED_MUTLIPLIER);
 		PyObject* ret = python->CallFunction(script, "Update", funcArgs);
 		if(ret) Py_DECREF(ret);
 
@@ -75,6 +79,30 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 		light2->SetLookAt(spot);
 		light3->SetLookAt(spot);
 		light4->SetLookAt(spot);
+
+		if(ge->GetKeyListener()->IsPressed(VK_ADD))
+		{
+			if(SpeedPlus)
+			{
+				SPEED_MUTLIPLIER *= 2;
+				SpeedPlus = false;
+				// Update textbox
+			}
+		}
+		else
+			SpeedPlus = true;
+
+		if(ge->GetKeyListener()->IsPressed(VK_SUBTRACT))
+		{
+			if(SpeedMinus)
+			{
+				SPEED_MUTLIPLIER /= 2;
+				SpeedMinus = false;
+				// Update textbox
+			}
+		}
+		else
+			SpeedMinus = true;
 
 		// Key inputs
 		if(ge->GetKeyListener()->IsPressed('W'))

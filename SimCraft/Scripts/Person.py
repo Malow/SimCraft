@@ -38,7 +38,10 @@ class Person(ScriptedEntity):
 	
 	def __init__(self, ID, age, sex, pos):
 		ScriptedEntity.__init__(self, ID, pos)
-		Python.CreateEntity("Media/Human.obj", ID, pos.x, pos.y, pos.z)
+		if sex == "male":
+			Python.CreateEntity("Media/HumanMale.obj", ID, pos.x, pos.y, pos.z)
+		else:
+			Python.CreateEntity("Media/HumanFemale.obj", ID, pos.x, pos.y, pos.z)
 		self.__age = age
 		self.__sex = sex
 		self.__home = Vector3(10 * ID + 50, 0 , 10 * ID + 50)
@@ -70,7 +73,6 @@ class Person(ScriptedEntity):
 			
 		ScriptedEntity.SetPosition(self, newPos.x, newPos.y, newPos.z)
 		Python.SetPosition(self.GetID(), newPos.x, newPos.y, newPos.z)
-		Python.SetCameraPosition(newPos.x, 40, newPos.z)
 		
 	def UpdateValues(self, deltaTime):
 		if self.__goingToDo == "CollectFood":

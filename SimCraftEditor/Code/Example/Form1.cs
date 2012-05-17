@@ -42,6 +42,8 @@ namespace Example
             this.KeyUp += new KeyEventHandler(RenderBox_KeyUp);
             this.KeyPress += new KeyPressEventHandler(RenderBox_KeyPress);
 
+            HumanMale.Checked = true;
+
             this.InitEngine();
         }
 
@@ -193,10 +195,6 @@ namespace Example
 
         private void CreateUnitButton_Click(object sender, EventArgs e)
         {
-            HumanPanel.Hide();
-            FoodBushPanel.Hide();
-            TreePanel.Hide();
-
             // Save the selected employee's name, because we will remove
             // the employee's name from the list.
             string unit = (string)UnitList.SelectedItem;
@@ -272,7 +270,7 @@ namespace Example
                 this.SaveAs();
             else
             {
-                this.m_GameEngine.SaveToPath(this.filePath + ".txt");
+                this.m_GameEngine.SaveToPath(this.filePath);
                 this.changeHasBeenMade = false;
             }
         }
@@ -285,7 +283,7 @@ namespace Example
 
             if (sfd.FileName != "")
             {
-                this.m_GameEngine.SaveToPath(sfd.FileName + ".txt");
+                this.m_GameEngine.SaveToPath(sfd.FileName);
                 this.filePath = sfd.FileName;
                 this.changeHasBeenMade = false;
             }

@@ -112,7 +112,7 @@ float GetDistance(D3DXVECTOR3 a, D3DXVECTOR3 b)
 {
 	D3DXVECTOR3 c = a - b;
 	return D3DXVec3Length(&c);
-}
+}	
 
 void GameEngine::DeleteUnitClosestToArrow()
 {
@@ -121,7 +121,8 @@ void GameEngine::DeleteUnitClosestToArrow()
 	int slot = 0;
 	for(int i = 0; i < this->units.size(); i++)
 	{
-		if(float dist = GetDistance(this->arrow->GetPosition(), this->units.get(i)->mesh->GetPosition()) < distance)
+		float dist = GetDistance(this->arrow->GetPosition(), this->units.get(i)->mesh->GetPosition());
+		if(dist < distance)
 		{
 			closest = this->units.get(i);
 			distance = dist;
@@ -141,7 +142,10 @@ void GameEngine::CreateHuman(bool male, int age)
 	Unit* unit = new Unit();
 	unit->type = HUMAN;
 	unit->male = male;
-	unit->mesh = this->eng->CreateStaticMesh("Media/Human.obj", this->arrow->GetPosition());
+	if(male)
+		unit->mesh = this->eng->CreateStaticMesh("Media/HumanMale.obj", this->arrow->GetPosition());
+	else
+		unit->mesh = this->eng->CreateStaticMesh("Media/HumanFemale.obj", this->arrow->GetPosition());
 	unit->age = age;
 	unit->resources = 0;
 	this->units.add(unit);

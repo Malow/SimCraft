@@ -22,13 +22,16 @@ class ScriptedEntity():
 class FoodBush(ScriptedEntity):
 	__food = 1000
 	__foodGrowth = 10
-	def __init__(self, ID, pos):
+	def __init__(self, ID, food, pos):
 		ScriptedEntity.__init__(self, ID, pos)
-		self.__food = 1000
+		self.__food = food
+		Python.CreateEntity("Media/FoodBush.obj", ID, pos.x, pos.y, pos.z)
 		
 	def Update(self, deltaTime, entities, entId):
 		if self.__food < 1000:
 			self.__food += self.__foodGrowth * deltaTime
+		if self.__food > 1000:
+			self.__food = 1000
 
 	def RemoveFood(self, food):
 		self.__food -= food
