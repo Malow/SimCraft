@@ -1,7 +1,7 @@
 import Python
-import SimCraftMain
 from Vector3 import Vector3
 import math
+from FoodBush import FoodBush
 
 
 class ScriptedEntity():
@@ -24,62 +24,36 @@ class ScriptedEntity():
 class Person(ScriptedEntity):
 	__age = 0
 	__sex = "unknown"
-	__foodReq = 50
+	__foodReq = 500
 	__foodCollected = 0
-	__goingToDo = "unknown"
+	__goingToDo = "Nothing"
 	__goingToPos = Vector3(0, 0, 0)
-	__maxAwakeTime = 60 * 60 * 8  #sec * min * tim
-	__timeUntillSleep = 60 * 60 * 8  #sec * min * tim
+	__maxSleepTime = 60 * 60 * 8  #sec * min * tim
+	__timeUntillSleep =  60 * 60 * 8 #sec * min * tim
 	__walkSpeed = 100
 	__home = Vector3(0,0,0)
-	
+	__foodCollecingSpeed = 50
 	def __init__(self, ID, age, sex, pos):
 		ScriptedEntity.__init__(self, ID, pos)
 		self.__age = age
 		self.__sex = sex
 		self.__home = Vector3(10 * ID + 50, 0 , 10 * ID + 50)
 		
-	def Update(self, deltaTime, entities, entId):		
-	##################
-	#Calc the value to understand what to do
-		sleepValue = 1 - (math.pow(self.__timeUntillSleep / self.__maxAwakeTime, 2))
-		if self.__foodCollected != 0:
-			gatherFoodValue = 1 - (self.__foodCollected / self.__foodReq)
-		else:
-			gatherFoodValue = 1
+	def Update(self, deltaTime, entities, entId):
+		self.UpdateValues(deltaTime)
 		
-		if gatherFoodValue > sleepValue:
-			self.__goingToDo = "CollectFood"
-		else:
-			self.__goingToDo = "Sleep"
-	##################
-	
-		if self.__goingToDo != "Sleep":
-			self.__timeUntillSleep = self.__timeUntillSleep - deltaTime*100
-			if self.__foodCollected > 0:
-				self.__foodCollected -= (1 * deltaTime)
-			
-		
-		if self.__goingToDo == "CollectFood":
-			if self.GetPosition() == self.__goingToPos:
-				self.__foodCollected = self.__foodCollected + (10 * deltaTime)
-			else:
-				self.WalkTo(self.__goingToPos, deltaTime)
-		elif self.__goingToDo == "Sleep":
-			if self.GetPosition() == self.__home:
-				self.__timeUntillSleep += deltaTime * 10
-				if self.__timeUntillSleep > self.__maxAwakeTime:
-					self.__goingToDo = "Nothing"
-			else:
-				self.WalkTo(self.__home, deltaTime)
-		
+		if self.__goingToDo == "Sleep":
+			self.Sleeping(deltaTime)
+		elif self.__goingToDo == "CollectFood":
+			self.CollectFood(deltaTime, entities)
+		elif self.__goingToDo == "Nothing":
+			self.Nothing(deltaTime)
 		#if entId == 4:
 		#	tempPerson = Person(entId, 10, "male", Vector3(2, 0, 2))
 		#	entities.append(tempPerson)
 		#	pos = entities[entId].GetPosition()
 		#	Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
 		#	entId += 1
-		
 		return entId
 		
 	def WalkTo(self, to, deltaTime):
@@ -92,7 +66,72 @@ class Person(ScriptedEntity):
 			
 		ScriptedEntity.SetPosition(self, newPos.x, newPos.y, newPos.z)
 		Python.SetPosition(self.GetID(), newPos.x, newPos.y, newPos.z)
+		Python.SetCameraPosition(newPos.x, 40, newPos.z)
 		
+	def UpdateValues(self, deltaTime):
+		if self.__goingToDo == "CollectFood":
+			self.__timeUntillSleep -= deltaTime*1000
+			self.__foodCollected -= (1 * deltaTime)
+		elif self.__goingToDo == "Sleep":
+			self.__foodCollected -= (0.5 * deltaTime)
+		elif self.__goingToDo == "Nothing":
+			self.__timeUntillSleep -= deltaTime*1000
+			self.__foodCollected -= (1 * deltaTime)
+			
+	def Sleeping(self, deltaTime):
+		self.__goingToPos = self.__home
+	
+		if self.GetPosition() == self.__goingToPos:
+			self.__timeUntillSleep += deltaTime*1000
+			if self.__timeUntillSleep > self.__maxSleepTime:
+				self.__goingToDo = "Nothing"
+				self.__collectedFood -= (10 * deltaTime)
+		else:
+			self.WalkTo(self.__goingToPos, deltaTime)
+					
+	def CollectFood(self, deltaTime, entities):
+		if self.__foodCollected > self.__foodReq:
+				self.__goingToDo = "Nothing"
+				return
+		sleepValue = 1 - (math.pow(self.__timeUntillSleep / self.__maxSleepTime, 2))
+		if sleepValue > 0.95:
+			self.__goingToDo = "Sleep"
+				
+		######Calculate the closest foodBush
+		distToClosest = 99999
+		closest = self
+		for entity in entities:
+			if isinstance(entity, FoodBush):
+				dist = (entity.GetPosition() - self.GetPosition()).Length()
+				if dist < distToClosest:
+					distToClosest = dist
+					closest = entity
+					
+		self.__goingToPos = closest.GetPosition()
+		###### END
+		if self.GetPosition() == self.__goingToPos:
+			self.__foodCollected += (self.__foodCollecingSpeed * deltaTime)
+			closest.RemoveFood(self.__foodCollecingSpeed * deltaTime)
+		else:
+			self.WalkTo(self.__goingToPos, deltaTime)
+			
+	def Nothing(self, deltaTime):
+		if self.GetPosition() != Vector3(100, 0 ,100): #temp to see when its here
+				self.WalkTo(Vector3(100, 0 ,100), deltaTime)
+	
+		sleepValue = 1 - (math.pow(self.__timeUntillSleep / self.__maxSleepTime, 2))
+		if self.__foodCollected != 0:
+			gatherFoodValue = 1 - (self.__foodCollected / self.__foodReq)
+		else:
+			gatherFoodValue = 1
+		
+		if sleepValue > 0.8:
+			self.__goingToDo = "Sleep"
+		elif gatherFoodValue > 0.8:
+			self.__goingToDo = "CollectFood"
+		else:
+			self.__goingToDo = "Nothing"
+			
 	def GetAge(self):
 		return self.__age
 		

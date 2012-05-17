@@ -7,6 +7,7 @@ from Vector3 import Vector3
 import Python # Ladda in vår c++ modul Python
 # -*- coding: utf-8 -*-
 from Person import Person
+from FoodBush import FoodBush
 
 #v1 = Vector3(0,0,0)
 #v2 = Vector3(2,2,2)
@@ -19,7 +20,19 @@ entities = []
 tempPerson = Person(entId, 40, "female", Vector3(112, 0, 112))
 entities.append(tempPerson)
 pos = entities[entId].GetPosition()
-Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
+Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
+entId += 1
+
+foodBush = FoodBush(entId, Vector3(20, 0, 40))
+entities.append(foodBush)
+pos = entities[entId].GetPosition()
+Python.CreateEntity("Media/FoodBush.obj", foodBush.GetID(), pos.x, pos.y, pos.z)
+entId += 1
+
+foodBush = FoodBush(entId, Vector3(40, 0, 40))
+entities.append(foodBush)
+pos = entities[entId].GetPosition()
+Python.CreateEntity("Media/FoodBush.obj", foodBush.GetID(), pos.x, pos.y, pos.z)
 entId += 1
 
 #tempPerson = Person(entId, 42, "male", Vector3(108, 0, 108))
@@ -35,7 +48,7 @@ entId += 1
 #entId += 1
 
 def Update(time):
-	time /= 10000
+	time /= 1000
 	##if v1 == v3:
 	##	Python.Debug("Wrong")
 	##else:
