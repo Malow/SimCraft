@@ -24,17 +24,21 @@ class ScriptedEntity():
 class Person(ScriptedEntity):
 	__age = 0
 	__sex = "unknown"
-	__foodReq = 500
-	__foodCollected = 0
+	__foodReq = 27000
+	__foodCollected = 10000
 	__goingToDo = "Nothing"
 	__goingToPos = Vector3(0, 0, 0)
 	__maxSleepTime = 60 * 60 * 8  #sec * min * tim
 	__timeUntillSleep =  60 * 60 * 8 #sec * min * tim
 	__walkSpeed = 100
 	__home = Vector3(0,0,0)
-	__foodCollecingSpeed = 50
+	__foodCollecingSpeed = 6
+	__eatingSpeed = 4
+	__SleepingMultiplier = 1
+	
 	def __init__(self, ID, age, sex, pos):
 		ScriptedEntity.__init__(self, ID, pos)
+		Python.CreateEntity("Media/Human.obj", ID, pos.x, pos.y, pos.z)
 		self.__age = age
 		self.__sex = sex
 		self.__home = Vector3(10 * ID + 50, 0 , 10 * ID + 50)
@@ -57,12 +61,12 @@ class Person(ScriptedEntity):
 		return entId
 		
 	def WalkTo(self, to, deltaTime):
-		walkingVec = to - self.GetPosition()
-		if walkingVec.Length() > 1:
-			walkingVec.Normalize()
-			newPos = self.GetPosition() + (walkingVec * (self.__walkSpeed * deltaTime))
-		else:
-			newPos = to
+		#walkingVec = to - self.GetPosition()
+		#if walkingVec.Length() > 1:
+		#	walkingVec.Normalize()
+		#	newPos = self.GetPosition() + (walkingVec * (self.__walkSpeed * deltaTime))
+		#else:
+		newPos = to
 			
 		ScriptedEntity.SetPosition(self, newPos.x, newPos.y, newPos.z)
 		Python.SetPosition(self.GetID(), newPos.x, newPos.y, newPos.z)
@@ -70,26 +74,29 @@ class Person(ScriptedEntity):
 		
 	def UpdateValues(self, deltaTime):
 		if self.__goingToDo == "CollectFood":
-			self.__timeUntillSleep -= deltaTime*1000
-			self.__foodCollected -= (1 * deltaTime)
+			self.__timeUntillSleep -= deltaTime*self.__SleepingMultiplier
+			self.__foodCollected -= (self.__eatingSpeed * deltaTime)
 		elif self.__goingToDo == "Sleep":
-			self.__foodCollected -= (0.5 * deltaTime)
+			self.__foodCollected -= ((self.__eatingSpeed / 2) * deltaTime)
 		elif self.__goingToDo == "Nothing":
-			self.__timeUntillSleep -= deltaTime*1000
-			self.__foodCollected -= (1 * deltaTime)
+			self.__timeUntillSleep -= deltaTime*self.__SleepingMultiplier
+			self.__foodCollected -= (self.__eatingSpeed * deltaTime)
 			
 	def Sleeping(self, deltaTime):
 		self.__goingToPos = self.__home
 	
 		if self.GetPosition() == self.__goingToPos:
-			self.__timeUntillSleep += deltaTime*1000
+			self.__timeUntillSleep += deltaTime * self.__SleepingMultiplier * 2
 			if self.__timeUntillSleep > self.__maxSleepTime:
 				self.__goingToDo = "Nothing"
-				self.__collectedFood -= (10 * deltaTime)
+				if self.__foodCollected > 9000:
+					self.__foodCollected -= (10 * deltaTime)
 		else:
 			self.WalkTo(self.__goingToPos, deltaTime)
 					
 	def CollectFood(self, deltaTime, entities):
+		Python.Debug("Food: " + str(self.__foodCollected))
+		
 		if self.__foodCollected > self.__foodReq:
 				self.__goingToDo = "Nothing"
 				return
@@ -104,14 +111,16 @@ class Person(ScriptedEntity):
 			if isinstance(entity, FoodBush):
 				dist = (entity.GetPosition() - self.GetPosition()).Length()
 				if dist < distToClosest:
-					distToClosest = dist
-					closest = entity
+					if entity.GetFood() > 0:
+						distToClosest = dist
+						closest = entity
 					
 		self.__goingToPos = closest.GetPosition()
 		###### END
 		if self.GetPosition() == self.__goingToPos:
 			self.__foodCollected += (self.__foodCollecingSpeed * deltaTime)
-			closest.RemoveFood(self.__foodCollecingSpeed * deltaTime)
+			if isinstance(closest, FoodBush):
+				closest.RemoveFood(self.__foodCollecingSpeed * deltaTime)
 		else:
 			self.WalkTo(self.__goingToPos, deltaTime)
 			
@@ -124,6 +133,9 @@ class Person(ScriptedEntity):
 			gatherFoodValue = 1 - (self.__foodCollected / self.__foodReq)
 		else:
 			gatherFoodValue = 1
+		
+		Python.Debug("Sleep Value: " + str(sleepValue))
+		Python.Debug("Gather Value: " + str(gatherFoodValue))
 		
 		if sleepValue > 0.8:
 			self.__goingToDo = "Sleep"

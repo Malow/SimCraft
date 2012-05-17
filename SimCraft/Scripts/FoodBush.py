@@ -27,9 +27,6 @@ class FoodBush(ScriptedEntity):
 		self.__food = 1000
 		
 	def Update(self, deltaTime, entities, entId):
-		Python.Debug("Food")
-		Python.Debug(str(self.__food))
-		Python.Debug(str(deltaTime))
 		if self.__food < 1000:
 			self.__food += self.__foodGrowth * deltaTime
 
