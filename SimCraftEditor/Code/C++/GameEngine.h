@@ -52,6 +52,9 @@ public:
 
 	void DeleteUnitClosestToArrow();
 
+	const float MaxWood = 5000.0f;
+	const float MaxFood = 1000.0f;
+
 	void CreateHuman(bool male, int age);
 	void CreateTree(int age, int wood);
 	void CreateFoodBush(int food);

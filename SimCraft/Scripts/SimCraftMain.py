@@ -9,6 +9,7 @@ import Python # Ladda in vår c++ modul Python
 from Person import Person
 from FoodBush import FoodBush
 from Tree import Tree
+from Wolf import Wolf
 
 #v1 = Vector3(0,0,0)
 #v2 = Vector3(2,2,2)
@@ -61,6 +62,21 @@ def LoadMap(filename):
 			newBush = FoodBush(entId, food, Vector3(x, y, z))
 			entities.append(newBush)
 			entId += 1
+		elif line == "Wolf":
+			male = int(f.readline().replace('\n', ''))
+			age = int(f.readline().replace('\n', ''))
+			x = float(f.readline().replace('\n', ''))
+			y = float(f.readline().replace('\n', ''))
+			z = float(f.readline().replace('\n', ''))
+			if male == 0:
+				newWolf = Wolf(entId, age, "male", Vector3(x, y, z))
+				entities.append(newWolf)
+				entId += 1
+			else:
+				newWolf = Wolf(entId, age, "female", Vector3(x, y, z))
+				entities.append(newWolf)
+				entId += 1
+				
 		asd = f.readline()
 	
 	return 1 == 1

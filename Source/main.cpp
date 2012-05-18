@@ -50,8 +50,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 
 	PyObject* script = python->LoadScript("Scripts.SimCraftMain");
 
+
 	// Load Map:
-		
 	PyObject* funcArgs = Py_BuildValue("(s)", "TestMap1.txt");
 	PyObject* ret = python->CallFunction(script, "LoadMap", funcArgs);
 	if(ret) Py_DECREF(ret);
@@ -60,6 +60,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 	float SPEED_MUTLIPLIER = 1;
 	bool SpeedPlus = true;
 	bool SpeedMinus = true;
+	float scale = 1.0f;
 
 	float diff = ge->Update();	// To not get a high first diff
 	while(ge->isRunning())	// Returns true as long as ESC hasnt been pressed, if it's pressed the game engine will shut down itself (to be changed)

@@ -47,6 +47,12 @@ class Person(ScriptedEntity):
 		self.__home = Vector3(10 * ID + 50, 0 , 10 * ID + 50)
 		
 	def Update(self, deltaTime, entities, entId):
+		self.__age += deltaTime / 31556926.0          # 1 year
+		if self.__age < 20:
+			Python.SetScale(self.GetID(), float(float(self.__age) / 20.0))
+		else:
+			Python.SetScale(self.GetID(), 1.0)
+		
 		self.UpdateValues(deltaTime)
 		
 		if self.__goingToDo == "Sleep":
@@ -61,6 +67,7 @@ class Person(ScriptedEntity):
 		#	pos = entities[entId].GetPosition()
 		#	Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
 		#	entId += 1
+		
 		return entId
 		
 	def WalkTo(self, to, deltaTime):

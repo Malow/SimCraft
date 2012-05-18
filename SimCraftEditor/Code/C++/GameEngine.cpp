@@ -148,6 +148,8 @@ void GameEngine::CreateHuman(bool male, int age)
 		unit->mesh = this->eng->CreateStaticMesh("Media/HumanFemale.obj", this->arrow->GetPosition());
 	unit->age = age;
 	unit->resources = 0;
+	if(age < 20)
+		unit->mesh->Scale(age / 20.0f);
 	this->units.add(unit);
 }
 
@@ -156,6 +158,7 @@ void GameEngine::CreateTree(int age, int wood)
 	Unit* unit = new Unit();
 	unit->type = TREE;
 	unit->mesh = this->eng->CreateStaticMesh("Media/Tree.obj", this->arrow->GetPosition());
+	unit->mesh->Scale(wood / this->MaxWood);
 	unit->age = age;
 	unit->resources = wood;
 	this->units.add(unit);
@@ -166,6 +169,7 @@ void GameEngine::CreateFoodBush(int food)
 	Unit* unit = new Unit();
 	unit->type = FOOD_BUSH;
 	unit->mesh = this->eng->CreateStaticMesh("Media/FoodBush.obj", this->arrow->GetPosition());
+	unit->mesh->Scale(food / this->MaxFood);
 	unit->age = 0;
 	unit->resources = food;
 	this->units.add(unit);

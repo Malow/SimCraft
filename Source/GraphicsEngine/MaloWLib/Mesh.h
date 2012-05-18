@@ -37,6 +37,7 @@ public:
 	void RotateAxis(D3DXVECTOR3 around, float angle);
 	void Scale(D3DXVECTOR3 scale);
 	void Scale(float scale);
+	void SetScale(float scale);
 
 	D3DXVECTOR3 GetPosition() const { return this->pos; }
 	D3DXQUATERNION GetRotation() const { return this->rotQuat; }
