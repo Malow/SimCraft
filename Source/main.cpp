@@ -50,8 +50,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 
 	PyObject* script = python->LoadScript("Scripts.SimCraftMain");
 
+	ge->CreateStaticMesh("Media/House.obj", D3DXVECTOR3(50, 0, 50));
+
+
 	// Load Map:
-		
 	PyObject* funcArgs = Py_BuildValue("(s)", "TestMap1.txt");
 	PyObject* ret = python->CallFunction(script, "LoadMap", funcArgs);
 	if(ret) Py_DECREF(ret);
@@ -60,18 +62,20 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 	float SPEED_MUTLIPLIER = 1;
 	bool SpeedPlus = true;
 	bool SpeedMinus = true;
+	float scale = 1.0f;
 
 	float diff = ge->Update();	// To not get a high first diff
 	while(ge->isRunning())	// Returns true as long as ESC hasnt been pressed, if it's pressed the game engine will shut down itself (to be changed)
 	{
 		float diff = ge->Update();	// Updates camera etc, does NOT render the frame, another process is doing that, so diff should be very low.
-
+		
 		PyObject* funcArgs = Py_BuildValue("(f)", diff * SPEED_MUTLIPLIER);
 		PyObject* ret = python->CallFunction(script, "Update", funcArgs);
 		if(ret) Py_DECREF(ret);
 
 
 		// Make lights face your way
+		/*
 		D3DXVECTOR3 spot = ge->GetCamera()->getPosition();
 		spot.z += spot.y / 2.0f;
 		spot.y = 0.0f;
@@ -79,6 +83,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 		light2->SetLookAt(spot);
 		light3->SetLookAt(spot);
 		light4->SetLookAt(spot);
+		*/
 
 		if(ge->GetKeyListener()->IsPressed(VK_ADD))
 		{

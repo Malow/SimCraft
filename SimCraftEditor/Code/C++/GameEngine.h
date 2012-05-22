@@ -12,11 +12,15 @@
 
 #include "GraphicsEngine.h"
 
+#define MaxWood 5000.0f
+#define MaxFood 1000.0f
+
 enum UNIT_TYPE
 {
 	HUMAN = 0,
 	TREE = 1, 
-	FOOD_BUSH = 2
+	FOOD_BUSH = 2,
+	WOLF = 3
 };
 
 struct Unit
@@ -53,6 +57,7 @@ public:
 	void DeleteUnitClosestToArrow();
 
 	void CreateHuman(bool male, int age);
+	void CreateWolf(bool male, int age);
 	void CreateTree(int age, int wood);
 	void CreateFoodBush(int food);
 

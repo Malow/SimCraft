@@ -122,17 +122,16 @@ static PyObject* SetScale(PyObject* self, PyObject* args)
 	float scale = 0.0f;
 	if(!PyArg_ParseTuple(args, "if", &id, &scale))
 	{
-		PyErr_SetString(PyExc_RuntimeError, "GameEngine.Print wants a single string argument");
+		PyErr_SetString(PyExc_RuntimeError, "GameEngine.SetScale wants a i f argument");
 		MaloW::Debug("SetScale arguments failed");
 		return NULL;
 	}
-
 	MaloW::Array<Entity*>* ents = GetPythonWrapper()->entities;
 	for(int i = 0; i < ents->size(); i++)
 	{
 		if(ents->get(i)->id == id)
 		{
-			ents->get(i)->mesh->Scale(scale);
+			ents->get(i)->mesh->SetScale(scale);
 			i = ents->size();
 		}
 	}

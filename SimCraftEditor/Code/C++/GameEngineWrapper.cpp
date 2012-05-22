@@ -92,6 +92,11 @@ void GameEngineWrapper::CreateHuman(bool male, int age)
 		m_GameEngine->CreateHuman(male, age);
 }
 
+void GameEngineWrapper::CreateWolf(bool male, int age)
+{
+	if(m_GameEngine)
+		m_GameEngine->CreateWolf(male, age);
+}
 void GameEngineWrapper::CreateTree(int age, int wood)
 {
 	if(m_GameEngine)

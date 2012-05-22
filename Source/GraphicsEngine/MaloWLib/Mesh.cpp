@@ -151,6 +151,14 @@ void Mesh::Scale(float scale)
 	this->RecreateWorldMatrix();
 }
 
+void Mesh::SetScale(float scale)
+{
+	this->scale.x = scale;
+	this->scale.y = scale;
+	this->scale.z = scale;
+	this->RecreateWorldMatrix();
+}
+
 void Mesh::RecreateWorldMatrix()
 {
 	D3DXMATRIX translate;

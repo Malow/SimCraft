@@ -148,6 +148,24 @@ void GameEngine::CreateHuman(bool male, int age)
 		unit->mesh = this->eng->CreateStaticMesh("Media/HumanFemale.obj", this->arrow->GetPosition());
 	unit->age = age;
 	unit->resources = 0;
+	if(age < 20)
+		unit->mesh->Scale(age / 20.0f);
+	this->units.add(unit);
+}
+
+void GameEngine::CreateWolf(bool male, int age)
+{
+	Unit* unit = new Unit();
+	unit->type = WOLF;
+	unit->male = male;
+	if(male)
+		unit->mesh = this->eng->CreateStaticMesh("Media/WolfMale.obj", this->arrow->GetPosition());
+	else
+		unit->mesh = this->eng->CreateStaticMesh("Media/WolfFemale.obj", this->arrow->GetPosition());
+	unit->age = age;
+	unit->resources = 0;
+	if(age < 5)
+		unit->mesh->Scale(age / 5.0f);
 	this->units.add(unit);
 }
 
@@ -156,6 +174,7 @@ void GameEngine::CreateTree(int age, int wood)
 	Unit* unit = new Unit();
 	unit->type = TREE;
 	unit->mesh = this->eng->CreateStaticMesh("Media/Tree.obj", this->arrow->GetPosition());
+	unit->mesh->Scale(wood / MaxWood);
 	unit->age = age;
 	unit->resources = wood;
 	this->units.add(unit);
@@ -166,6 +185,7 @@ void GameEngine::CreateFoodBush(int food)
 	Unit* unit = new Unit();
 	unit->type = FOOD_BUSH;
 	unit->mesh = this->eng->CreateStaticMesh("Media/FoodBush.obj", this->arrow->GetPosition());
+	unit->mesh->Scale(food / MaxFood);
 	unit->age = 0;
 	unit->resources = food;
 	this->units.add(unit);
@@ -199,6 +219,12 @@ void GameEngine::SaveToPath(char* path)
 		{
 			out << "Food Bush" << endl;
 			out << unit->resources << endl;
+		}
+		else if(unit->type == WOLF)
+		{
+			out << "Wolf" << endl;
+			out << unit->male << endl;
+			out << unit->age << endl;
 		}
 
 		out << unit->mesh->GetPosition().x << endl;
@@ -276,6 +302,23 @@ void GameEngine::LoadFromPath(char* path)
 			this->arrow->SetPosition(D3DXVECTOR3(x, y, z));
 
 			this->CreateFoodBush(food);
+		}
+		else if(line == "Wolf")
+		{
+			getline(in, line);
+			bool male = atoi(line.c_str());
+			getline(in, line);
+			int age = atoi(line.c_str());
+
+			getline(in, line);
+			float x = atof(line.c_str());
+			getline(in, line);
+			float y = atof(line.c_str());
+			getline(in, line);
+			float z = atof(line.c_str());
+			this->arrow->SetPosition(D3DXVECTOR3(x, y, z));
+
+			this->CreateWolf(male, age);
 		}
 
 		getline(in, line);

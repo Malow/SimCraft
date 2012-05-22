@@ -9,6 +9,7 @@ import Python # Ladda in vår c++ modul Python
 from Person import Person
 from FoodBush import FoodBush
 from Tree import Tree
+from Wolf import Wolf
 
 #v1 = Vector3(0,0,0)
 #v2 = Vector3(2,2,2)
@@ -61,12 +62,48 @@ def LoadMap(filename):
 			newBush = FoodBush(entId, food, Vector3(x, y, z))
 			entities.append(newBush)
 			entId += 1
+		elif line == "Wolf":
+			male = int(f.readline().replace('\n', ''))
+			age = int(f.readline().replace('\n', ''))
+			x = float(f.readline().replace('\n', ''))
+			y = float(f.readline().replace('\n', ''))
+			z = float(f.readline().replace('\n', ''))
+			if male == 0:
+				newWolf = Wolf(entId, age, "male", Vector3(x, y, z))
+				entities.append(newWolf)
+				entId += 1
+			else:
+				newWolf = Wolf(entId, age, "female", Vector3(x, y, z))
+				entities.append(newWolf)
+				entId += 1
+
 		asd = f.readline()
 
 	return 1 == 1
 
+
 def Update(time):
-	#Python.Debug(str(time))
+	time /= 1000
+	##if v1 == v3:
+	##	Python.Debug("Wrong")
+	##else:
+	##	Python.Debug("Correct")
+	##if v1 == v1:
+	##	Python.Debug("Correct1")
+	##else:
+	##	Python.Debug("Wrong1")
+	##if v4 == v4:
+	##	Python.Debug("Correct2")
+	##else:
+	##	Python.Debug("Wrong2")
+	##if v2.Length()/2 == v3.Length():
+	##	Python.Debug("Correct3")
+	##else:
+	##	Python.Debug("Wrong3")
+	##if v2 == v3*2:
+	##	Python.Debug("Correct4")
+	##else:
+	##	Python.Debug("Wrong4")
 
 	global totaltime
 	global entId

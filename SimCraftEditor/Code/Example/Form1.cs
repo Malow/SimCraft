@@ -185,7 +185,7 @@ namespace Example
             // Save the selected employee's name, because we will remove
             // the employee's name from the list.
             string unit = (string)UnitList.SelectedItem;
-            if (unit == "Human")
+            if (unit == "Human" || unit == "Wolf")
                 HumanPanel.Show();
             else if (unit == "Tree")
                 TreePanel.Show();
@@ -204,6 +204,8 @@ namespace Example
                 m_GameEngine.CreateTree(Convert.ToInt32(TreeAge.Text), Convert.ToInt32(TreeWood.Text));
             else if (unit == "Food Bush")
                 m_GameEngine.CreateFoodBush(Convert.ToInt32(FoodBushFood.Text));
+            else if (unit == "Wolf")
+                m_GameEngine.CreateWolf(HumanMale.Checked, Convert.ToInt32(HumanAge.Text));
 
             this.changeHasBeenMade = true;
         }
