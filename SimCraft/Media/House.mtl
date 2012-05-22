@@ -1,0 +1,8 @@
+newmtl file1SG
+illum 4
+Kd 0.000000 0.000000 0.000000
+Ka 0.000000 0.000000 0.000000
+Tf 1.000000 1.000000 1.000000
+map_Kd Wood_tile_wallpaper_by_neko_xexe.png
+Ni 1.000000 
+

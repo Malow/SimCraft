@@ -24,11 +24,11 @@ entities = []
 def LoadMap(filename):
 	global entId
 	global entities
-	
+
 	f = open(filename)
 	nrOfEntries = int(f.readline().replace('\n', ''))
 	f.readline()
-	
+
 	for i in range(0, nrOfEntries):
 		line = f.readline().replace('\n', '')
 		if line == "Human":
@@ -76,16 +76,15 @@ def LoadMap(filename):
 				newWolf = Wolf(entId, age, "female", Vector3(x, y, z))
 				entities.append(newWolf)
 				entId += 1
-				
+
 		asd = f.readline()
-	
+
 	return 1 == 1
 
-	
-	
-	
-	
-	
+
+
+
+
 '''
 tempPerson = Person(entId, 40, "female", Vector3(112, 0, 112))
 entities.append(tempPerson)
@@ -142,13 +141,13 @@ def Update(time):
 	##	Python.Debug("Correct4")
 	##else:
 	##	Python.Debug("Wrong4")
-		
+
 	global totaltime
 	global entId
 	global entities
 	for onePerson in entities:
 		entId = onePerson.Update(time, entities, entId)
-		
+
 	'''
 	totaltime += time
 	if totaltime < 0:
@@ -160,7 +159,7 @@ def Update(time):
 		Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , pos.x, pos.y, pos.z)
 		entId += 1
 		totaltime = 0
-		
+
 	if entId > 500:
 		for tempPerson in entities:
 			if isinstance(tempPerson, Person):

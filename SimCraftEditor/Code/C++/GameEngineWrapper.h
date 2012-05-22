@@ -35,6 +35,7 @@ public:
 	void DeleteUnitClosestToArrow();
 
 	void CreateHuman(bool male, int age);
+	void CreateWolf(bool male, int age);
 	void CreateTree(int age, int wood);
 	void CreateFoodBush(int food);
 

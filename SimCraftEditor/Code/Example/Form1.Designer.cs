@@ -296,7 +296,8 @@
             this.UnitList.Items.AddRange(new object[] {
             "Human",
             "Food Bush",
-            "Tree"});
+            "Tree",
+            "Wolf"});
             this.UnitList.Location = new System.Drawing.Point(6, 4);
             this.UnitList.Name = "UnitList";
             this.UnitList.Size = new System.Drawing.Size(182, 21);

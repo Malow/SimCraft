@@ -94,6 +94,11 @@ namespace System { namespace Windows { namespace Interop
 		if(m_GameEngine)
 			m_GameEngine->CreateHuman(male, age);
 	}
+	void CppCLI::CreateWolf(bool male, int age)
+	{
+		if(m_GameEngine)
+			m_GameEngine->CreateWolf(male, age);
+	}
 	void CppCLI::CreateTree(int age, int wood)
 	{
 		if(m_GameEngine)
