@@ -23,11 +23,11 @@ entities = []
 def LoadMap(filename):
 	global entId
 	global entities
-	
+
 	f = open(filename)
 	nrOfEntries = int(f.readline().replace('\n', ''))
 	f.readline()
-	
+
 	for i in range(0, nrOfEntries):
 		line = f.readline().replace('\n', '')
 		if line == "Human":
@@ -62,77 +62,18 @@ def LoadMap(filename):
 			entities.append(newBush)
 			entId += 1
 		asd = f.readline()
-	
+
 	return 1 == 1
 
-	
-	
-	
-	
-	
-'''
-tempPerson = Person(entId, 40, "female", Vector3(112, 0, 112))
-entities.append(tempPerson)
-pos = entities[entId].GetPosition()
-Python.CreateEntity("Media/Human.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
-entId += 1
-
-#foodBush = FoodBush(entId, 1000, Vector3(20, 0, 40))
-foodBush = FoodBush(entId, Vector3(20, 0, 40))
-entities.append(foodBush)
-pos = entities[entId].GetPosition()
-Python.CreateEntity("Media/FoodBush.obj", foodBush.GetID(), pos.x, pos.y, pos.z)
-entId += 1
-
-#foodBush = FoodBush(entId, 1000, Vector3(40, 0, 40))
-foodBush = FoodBush(entId, Vector3(40, 0, 40))
-entities.append(foodBush)
-pos = entities[entId].GetPosition()
-Python.CreateEntity("Media/FoodBush.obj", foodBush.GetID(), pos.x, pos.y, pos.z)
-entId += 1
-'''
-
-#tempPerson = Person(entId, 42, "male", Vector3(108, 0, 108))
-#entities.append(tempPerson)
-#pos = entities[entId].GetPosition()
-#Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
-#entId += 1
-
-#tempPerson = Person(entId, 15, "male", Vector3(110, 0, 110))
-#entities.append(tempPerson)
-#pos = entities[entId].GetPosition()
-#Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID(), pos.x, pos.y, pos.z)
-#entId += 1
-
 def Update(time):
-	time /= 1000
-	##if v1 == v3:
-	##	Python.Debug("Wrong")
-	##else:
-	##	Python.Debug("Correct")
-	##if v1 == v1:
-	##	Python.Debug("Correct1")
-	##else:
-	##	Python.Debug("Wrong1")
-	##if v4 == v4:
-	##	Python.Debug("Correct2")
-	##else:
-	##	Python.Debug("Wrong2")
-	##if v2.Length()/2 == v3.Length():
-	##	Python.Debug("Correct3")
-	##else:
-	##	Python.Debug("Wrong3")
-	##if v2 == v3*2:
-	##	Python.Debug("Correct4")
-	##else:
-	##	Python.Debug("Wrong4")
-		
+	#Python.Debug(str(time))
+
 	global totaltime
 	global entId
 	global entities
 	for onePerson in entities:
 		entId = onePerson.Update(time, entities, entId)
-		
+
 	'''
 	totaltime += time
 	if totaltime < 0:
@@ -144,7 +85,7 @@ def Update(time):
 		Python.CreateEntity("Media/FoodBush.obj", tempPerson.GetID() , pos.x, pos.y, pos.z)
 		entId += 1
 		totaltime = 0
-		
+
 	if entId > 500:
 		for tempPerson in entities:
 			if isinstance(tempPerson, Person):
