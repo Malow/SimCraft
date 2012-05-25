@@ -36,10 +36,10 @@ class Person(ScriptedEntity):
     __AwakeSleepMultiplier = 1
     __SleepMultiplier = 3
 
-    __foodMax = 27000
-    __foodCollected = 10000
-    __foodCollecingSpeed = 12
-    __eatingSpeed = 6
+    __foodMax = 50
+    __foodCollected = 10
+    __foodCollectingSpeed = 0.4
+    __eatingSpeed = 0.005
 
     __woodReq = 50000
     __woodCollected = 0
@@ -47,32 +47,28 @@ class Person(ScriptedEntity):
 
     def __init__(self, ID, age, sex, pos):
     	ScriptedEntity.__init__(self, ID, pos)
-        Python.Debug("Person: " + str(ID))
+        #Python.Debug("Person: " + str(ID))
     	if sex == "male":
     		Python.CreateEntity("Media/HumanMale.obj", ID, pos.x, pos.y, pos.z)
     	else:
     		Python.CreateEntity("Media/HumanFemale.obj", ID, pos.x, pos.y, pos.z)
     	self.__age = age
     	self.__sex = sex
-    	if self.__sex == "woman":
-    		self.__foodCollecingSpeed *= 1.5
     	self.__home = Vector3(pos.x, pos.y , pos.z)
-    	self.__foodCollected = random.randint(5000, 15000)
+    	self.__foodCollected = random.randint(10, 40)
     	self.__goingToPos = self.__home
 
     def Update(self, deltaTime, entities, entId):
         if (1 - (self.__foodCollected / self.__foodMax)) > 1: #If a person doesn't get food he/she works slower etc (because they dont get energy)
             self.__woodCollectingSpeed = 3
-            self.__foodCollecingSpeed = 9
+            self.__foodCollectingSpeed = 0.2
             self.__SleepMultiplier = 2
             self.__AwakeSleepMultiplier = 2
-            self.__eatingSpeed = 3
         else:
             self.__woodCollectingSpeed = 5
-            self.__foodCollecingSpeed = 12
+            self.__foodCollectingSpeed = 0.4
             self.__SleepMultiplier = 3
             self.__AwakeSleepMultiplier = 1
-            self.__eatingSpeed = 6
 
         self.UpdateValues(deltaTime)
 
@@ -115,7 +111,7 @@ class Person(ScriptedEntity):
         	self.__foodCollected -= ((self.__eatingSpeed / 2) * deltaTime)
         elif self.__goingToDo == "GatherWood":
             self.__timeUntillSleep -= deltaTime*self.__AwakeSleepMultiplier*2
-            self.__foodCollected -= ((self.__eatingSpeed * 2) * deltaTime)
+            self.__foodCollected -= (self.__eatingSpeed * deltaTime)
         elif self.__goingToDo == "Nothing":
         	self.__timeUntillSleep -= deltaTime*self.__AwakeSleepMultiplier
         	self.__foodCollected -= (self.__eatingSpeed * deltaTime)
@@ -135,7 +131,7 @@ class Person(ScriptedEntity):
         	self.WalkTo(self.__goingToPos, deltaTime)
 
     def CollectFood(self, deltaTime, entities, entId):
-        Python.Debug("CollectFood: " + str(self.__foodCollected))
+        #Python.Debug("CollectFood: " + str(self.__foodCollectingSpeed))
 
         if self.__foodCollected > self.__foodMax:
         		self.__goingToDo = "Nothing"
@@ -151,7 +147,7 @@ class Person(ScriptedEntity):
             if isinstance(entity, FoodBush):
                 dist = (entity.GetPosition() - self.GetPosition()).Length()
                 if dist < distToClosest:
-                    if entity.GetFood() > (self.__foodCollecingSpeed * deltaTime):
+                    if entity.GetFood() > (self.__foodCollectingSpeed * deltaTime):
                         distToClosest = dist
                         closest = entity
                     else:
@@ -163,14 +159,14 @@ class Person(ScriptedEntity):
         ###### END
         if self.GetPosition() == self.__goingToPos:
         	if isinstance(closest, FoodBush):
-        		closest.RemoveFood(self.__foodCollecingSpeed * deltaTime)
-       			self.__foodCollected += (self.__foodCollecingSpeed * deltaTime)
+        		closest.RemoveFood(self.__foodCollectingSpeed * deltaTime)
+       			self.__foodCollected += (self.__foodCollectingSpeed * deltaTime)
 
         else:
         	self.WalkTo(self.__goingToPos, deltaTime)
 
     def GatherWood(self, deltaTime, entities, entId):
-        Python.Debug("CollectFood: " + str(self.__woodCollected))
+        #Python.Debug("CollectFood: " + str(self.__woodCollected))
         if self.__woodCollected > self.__woodReq:
         	self.__goingToDo = "Nothing"
         	return
@@ -218,7 +214,7 @@ class Person(ScriptedEntity):
         	self.WalkTo(self.__goingToPos, deltaTime)
 
     def Nothing(self, deltaTime):
-        Python.Debug("Nothing")
+        #Python.Debug("Nothing")
         random.seed(random.random())
         if self.GetPosition() == self.__goingToPos: #temp to see when its here
         	#Python.Debug("Im here")
@@ -242,8 +238,8 @@ class Person(ScriptedEntity):
         else:
         	gatherFoodValue = 1
 
-        Python.Debug("Sleep Value: " + str(sleepValue))
-        Python.Debug("Gather Value: " + str(gatherFoodValue))
+        #Python.Debug("Sleep Value: " + str(sleepValue))
+        #Python.Debug("Gather Value: " + str(gatherFoodValue))
 
         if sleepValue > 0.8:
         	self.__goingToDo = "Sleep"

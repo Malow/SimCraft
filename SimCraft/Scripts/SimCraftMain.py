@@ -84,6 +84,7 @@ def LoadMap(filename):
 
 def Update(time):
 	time /= 1000
+	#Python.Debug("" + str(time))
 	##if v1 == v3:
 	##	Python.Debug("Wrong")
 	##else:
