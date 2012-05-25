@@ -50,9 +50,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int nCmdShow)
 
 	PyObject* script = python->LoadScript("Scripts.SimCraftMain");
 
-	ge->CreateStaticMesh("Media/House.obj", D3DXVECTOR3(50, 0, 50));
-
-
 	// Load Map:
 	PyObject* funcArgs = Py_BuildValue("(s)", "TestMap1.txt");
 	PyObject* ret = python->CallFunction(script, "LoadMap", funcArgs);
