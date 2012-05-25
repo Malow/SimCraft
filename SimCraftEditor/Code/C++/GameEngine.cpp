@@ -33,7 +33,7 @@ HRESULT GameEngine::Init(HWND hWnd, int width, int height)
 
 
 	this->eng = new GraphicsEngine(params, hWnd, 0);
-	eng->SetSleepInRenderingThread(10);
+	eng->SetSleepInRenderingThread(50);
 
 	gfxeng::eng = eng; // Set the global eng to our engine so that GetGraphicsEngine(); can work.
 	eng->GetCamera()->setPosition(D3DXVECTOR3(100, 40, 100));
