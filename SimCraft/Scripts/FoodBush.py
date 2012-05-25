@@ -6,20 +6,21 @@ import random
 class ScriptedEntity():
     __ID = 0
     __Pos = Vector3(0,0,0)
-	
+    __Iam = "Unknown"
+
     def __init__(self, ID, pos):
         self.__ID = ID
         self.__Pos = pos
-        
+
     def GetID(self):
         return self.__ID
-    
+
     def GetPosition(self):
         return self.__Pos
-    
+
     def SetPosition(self, x, y, z):
         self.__Pos = Vector3(x, y, z)
-		
+
 class FoodBush(ScriptedEntity):
 	__MaxFood = 1000
 	__food = 1000
@@ -28,12 +29,12 @@ class FoodBush(ScriptedEntity):
 		ScriptedEntity.__init__(self, ID, pos)
 		self.__food = food
 		Python.CreateEntity("Media/FoodBush.obj", ID, pos.x, pos.y, pos.z)
-		
+
 	def Update(self, deltaTime, entities, entId):
 		if self.__food < 0:
 			entities.remove(self)
 			Python.DeleteEntity(self.GetID())
-			
+
 		else:
 			if self.__food < self.__MaxFood:
 				Python.SetScale(self.GetID(), float(float(self.__food) / float(self.__MaxFood)))
@@ -51,14 +52,14 @@ class FoodBush(ScriptedEntity):
 					newBush = FoodBush(entId, 10, self.GetPosition() + Vector3(rand2, 0, rand3) * 20.0)
 					entities.append(newBush)
 					entId += 1
-			
+
 		return entId
 
 	def RemoveFood(self, food):
 		self.__food -= food
 	def AddFood(self, food):
 		self.__food += food
-		
+
 	def SetFood(self, food):
 		self.__food = food
 	def GetFood(self):
